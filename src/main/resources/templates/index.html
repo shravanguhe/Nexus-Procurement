@@ -1,0 +1,4702 @@
+<!DOCTYPE html> <html lang="en" xmlns:th="http://www.thymeleaf.org"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nexus Procurement | Open B2B Procurement & Vendor Marketplace</title>
+
+<meta name="description"
+      content="Nexus Procurement connects buyers and vendors through structured requirements, quotations, purchase orders and end-to-end procurement workflows.">
+
+<!-- Google Font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap"
+      rel="stylesheet">
+
+<!-- Bootstrap 5 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Font Awesome 6 -->
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+    /* =========================================================
+       NEXUS PROCUREMENT
+       PUBLIC LANDING PAGE
+       ========================================================= */
+
+    :root {
+        --nexus-dark: #0B0717;
+        --nexus-deep: #120A24;
+        --nexus-purple: #6D28D9;
+        --nexus-purple-dark: #5B21B6;
+        --nexus-violet: #8B5CF6;
+        --nexus-soft: #A78BFA;
+        --nexus-light: #EDE9FE;
+        --nexus-white: #FFFFFF;
+        --nexus-off-white: #F8F7FC;
+        --nexus-text: #17121F;
+        --nexus-muted: #6B6475;
+        --nexus-border: #E7E2EF;
+        --nexus-success: #15803D;
+        --nexus-success-bg: #DCFCE7;
+        --nexus-warning: #B45309;
+        --nexus-shadow: 0 20px 60px rgba(37, 15, 74, 0.10);
+        --nexus-radius: 18px;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: "Inter", sans-serif;
+        color: var(--nexus-text);
+        background: var(--nexus-white);
+        overflow-x: hidden;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    button,
+    a {
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .container {
+        max-width: 1240px;
+    }
+
+    /* =========================================================
+       NAVBAR
+       ========================================================= */
+
+    .nexus-navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        padding: 17px 0;
+        background: rgba(255, 255, 255, 0.94);
+        backdrop-filter: blur(18px);
+        border-bottom: 1px solid rgba(231, 226, 239, 0.85);
+        transition: all 0.3s ease;
+    }
+
+    .nexus-navbar.scrolled {
+        padding: 11px 0;
+        box-shadow: 0 10px 35px rgba(31, 16, 53, 0.08);
+    }
+
+    .navbar-brand {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+        color: var(--nexus-dark) !important;
+        font-family: "Manrope", sans-serif;
+        font-size: 18px;
+        font-weight: 800;
+        letter-spacing: -0.5px;
+    }
+
+    .brand-mark {
+        position: relative;
+        width: 39px;
+        height: 39px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        border-radius: 11px;
+        background: linear-gradient(135deg, var(--nexus-purple), var(--nexus-violet));
+        box-shadow: 0 8px 22px rgba(109, 40, 217, 0.28);
+        overflow: hidden;
+    }
+
+    .brand-mark::before,
+    .brand-mark::after {
+        content: "";
+        position: absolute;
+        border: 1px solid rgba(255,255,255,0.45);
+        border-radius: 50%;
+    }
+
+    .brand-mark::before {
+        width: 24px;
+        height: 24px;
+    }
+
+    .brand-mark::after {
+        width: 12px;
+        height: 12px;
+    }
+
+    .brand-mark i {
+        font-size: 10px;
+        z-index: 2;
+    }
+
+    .navbar-brand span small {
+        display: block;
+        color: var(--nexus-muted);
+        font-size: 8px;
+        font-weight: 600;
+        letter-spacing: 1.8px;
+        margin-top: -1px;
+    }
+
+    .navbar-nav {
+        gap: 5px;
+    }
+
+    .nav-link {
+        color: #4B4554 !important;
+        font-size: 13px;
+        font-weight: 600;
+        padding: 9px 13px !important;
+        border-radius: 9px;
+        transition: 0.25s ease;
+    }
+
+    .nav-link:hover {
+        color: var(--nexus-purple) !important;
+        background: var(--nexus-light);
+    }
+
+    .nav-search {
+        width: 38px;
+        height: 38px;
+        border: 1px solid var(--nexus-border);
+        background: white;
+        color: var(--nexus-text);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.25s ease;
+    }
+
+    .nav-search:hover {
+        border-color: var(--nexus-soft);
+        color: var(--nexus-purple);
+        transform: translateY(-1px);
+    }
+
+    .login-btn {
+        color: var(--nexus-text);
+        font-size: 13px;
+        font-weight: 700;
+        padding: 10px 14px;
+    }
+
+    .get-started-btn,
+    .primary-btn {
+        color: white !important;
+        border: none;
+        background: linear-gradient(135deg, var(--nexus-purple), var(--nexus-violet));
+        box-shadow: 0 9px 25px rgba(109, 40, 217, 0.22);
+        transition: all 0.25s ease;
+    }
+
+    .get-started-btn {
+        font-size: 13px;
+        font-weight: 700;
+        padding: 11px 17px;
+        border-radius: 10px;
+    }
+
+    .get-started-btn:hover,
+    .primary-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 13px 30px rgba(109, 40, 217, 0.30);
+    }
+
+    /* =========================================================
+       HERO
+       ========================================================= */
+
+    .hero {
+        position: relative;
+        min-height: 790px;
+        padding: 155px 0 90px;
+        background:
+            radial-gradient(circle at 75% 35%, rgba(109, 40, 217, 0.23), transparent 27%),
+            radial-gradient(circle at 20% 85%, rgba(139, 92, 246, 0.10), transparent 30%),
+            var(--nexus-dark);
+        color: white;
+        overflow: hidden;
+    }
+
+    .hero-grid {
+        position: absolute;
+        inset: 0;
+        opacity: 0.17;
+        background-image:
+            linear-gradient(rgba(167, 139, 250, 0.16) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(167, 139, 250, 0.16) 1px, transparent 1px);
+        background-size: 55px 55px;
+        mask-image: linear-gradient(to bottom, black, transparent 90%);
+    }
+
+    .hero-glow {
+        position: absolute;
+        width: 600px;
+        height: 600px;
+        right: -180px;
+        top: 70px;
+        border: 1px solid rgba(139, 92, 246, 0.12);
+        border-radius: 50%;
+        box-shadow:
+            0 0 100px rgba(109, 40, 217, 0.12),
+            inset 0 0 100px rgba(109, 40, 217, 0.06);
+    }
+
+    .hero-glow::before {
+        content: "";
+        position: absolute;
+        inset: 70px;
+        border: 1px solid rgba(167, 139, 250, 0.12);
+        border-radius: 50%;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 2;
+    }
+
+    .hero-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        padding: 7px 12px;
+        border: 1px solid rgba(167, 139, 250, 0.27);
+        border-radius: 100px;
+        background: rgba(139, 92, 246, 0.08);
+        color: #C4B5FD;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 1.6px;
+        text-transform: uppercase;
+        margin-bottom: 22px;
+    }
+
+    .eyebrow-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #A78BFA;
+        box-shadow: 0 0 12px rgba(167, 139, 250, 0.9);
+    }
+
+    .hero h1 {
+        max-width: 700px;
+        font-family: "Manrope", sans-serif;
+        font-size: clamp(44px, 5.3vw, 76px);
+        line-height: 1.02;
+        letter-spacing: -3.7px;
+        font-weight: 800;
+        margin-bottom: 24px;
+    }
+
+    .hero h1 .gradient-text {
+        background: linear-gradient(100deg, #A78BFA, #8B5CF6, #C4B5FD);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    .hero-description {
+        max-width: 610px;
+        color: #B7AFC5;
+        font-size: 16px;
+        line-height: 1.8;
+        margin-bottom: 32px;
+    }
+
+    .hero-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .primary-btn,
+    .secondary-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+        min-height: 49px;
+        padding: 0 20px;
+        border-radius: 11px;
+        font-size: 13px;
+        font-weight: 700;
+    }
+
+    .secondary-btn {
+        color: white !important;
+        border: 1px solid rgba(255,255,255,0.16);
+        background: rgba(255,255,255,0.055);
+        transition: 0.25s ease;
+    }
+
+    .secondary-btn:hover {
+        background: rgba(255,255,255,0.10);
+        border-color: rgba(167,139,250,0.45);
+        transform: translateY(-2px);
+    }
+
+    .hero-note {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        margin-top: 22px;
+        color: #8F879D;
+        font-size: 11px;
+    }
+
+    .hero-note i {
+        color: #A78BFA;
+    }
+
+    /* =========================================================
+       PROCUREMENT NETWORK VISUAL
+       ========================================================= */
+
+    .network-wrapper {
+        position: relative;
+        min-height: 510px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .network-stage {
+        position: relative;
+        width: 470px;
+        height: 470px;
+    }
+
+    .network-ring {
+        position: absolute;
+        border: 1px solid rgba(167, 139, 250, 0.12);
+        border-radius: 50%;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .ring-one {
+        width: 250px;
+        height: 250px;
+    }
+
+    .ring-two {
+        width: 355px;
+        height: 355px;
+    }
+
+    .ring-three {
+        width: 455px;
+        height: 455px;
+    }
+
+    .network-line {
+        position: absolute;
+        height: 1px;
+        width: 190px;
+        background: linear-gradient(90deg, transparent, rgba(167,139,250,0.45), transparent);
+        left: 50%;
+        top: 50%;
+        transform-origin: left center;
+    }
+
+    .line-1 { transform: rotate(0deg); }
+    .line-2 { transform: rotate(45deg); }
+    .line-3 { transform: rotate(90deg); }
+    .line-4 { transform: rotate(135deg); }
+    .line-5 { transform: rotate(180deg); }
+    .line-6 { transform: rotate(225deg); }
+    .line-7 { transform: rotate(270deg); }
+    .line-8 { transform: rotate(315deg); }
+
+    .network-center {
+        position: absolute;
+        width: 116px;
+        height: 116px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: radial-gradient(circle, #2A154E, #160C2B);
+        border: 1px solid rgba(167,139,250,0.52);
+        box-shadow:
+            0 0 0 12px rgba(109,40,217,0.06),
+            0 0 65px rgba(109,40,217,0.27);
+        z-index: 5;
+    }
+
+    .network-center strong {
+        font-family: "Manrope", sans-serif;
+        font-size: 16px;
+        letter-spacing: 1px;
+    }
+
+    .network-center span {
+        color: #9F95AD;
+        font-size: 8px;
+        letter-spacing: 1.5px;
+        margin-top: 3px;
+    }
+
+    .network-node {
+        position: absolute;
+        width: 73px;
+        height: 73px;
+        border-radius: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: rgba(19, 11, 37, 0.94);
+        border: 1px solid rgba(167,139,250,0.25);
+        color: white;
+        z-index: 4;
+        box-shadow: 0 12px 35px rgba(0,0,0,0.22);
+        animation: nodeFloat 4s ease-in-out infinite;
+    }
+
+    .network-node i {
+        font-size: 15px;
+        color: #A78BFA;
+        margin-bottom: 4px;
+    }
+
+    .network-node span {
+        font-size: 7px;
+        font-weight: 700;
+        letter-spacing: 0.8px;
+        color: #D4CEE0;
+    }
+
+    .node-top {
+        left: 50%;
+        top: 6px;
+        transform: translateX(-50%);
+    }
+
+    .node-right-top {
+        right: 24px;
+        top: 95px;
+        animation-delay: 0.4s;
+    }
+
+    .node-right-bottom {
+        right: 24px;
+        bottom: 95px;
+        animation-delay: 0.8s;
+    }
+
+    .node-bottom {
+        left: 50%;
+        bottom: 6px;
+        transform: translateX(-50%);
+        animation-delay: 1.2s;
+    }
+
+    .node-left-bottom {
+        left: 24px;
+        bottom: 95px;
+        animation-delay: 1.6s;
+    }
+
+    .node-left-top {
+        left: 24px;
+        top: 95px;
+        animation-delay: 2s;
+    }
+
+    @keyframes nodeFloat {
+        0%, 100% { margin-top: 0; }
+        50% { margin-top: -5px; }
+    }
+
+    .floating-data-card {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-width: 170px;
+        padding: 10px 13px;
+        border-radius: 11px;
+        background: rgba(22, 13, 42, 0.91);
+        border: 1px solid rgba(167,139,250,0.20);
+        box-shadow: 0 16px 40px rgba(0,0,0,0.25);
+        backdrop-filter: blur(14px);
+        z-index: 7;
+        animation: cardFloat 5s ease-in-out infinite;
+    }
+
+    .data-icon {
+        width: 31px;
+        height: 31px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(139,92,246,0.12);
+        color: #A78BFA;
+        font-size: 12px;
+    }
+
+    .floating-data-card strong {
+        display: block;
+        font-size: 10px;
+        color: white;
+        margin-bottom: 2px;
+    }
+
+    .floating-data-card span {
+        color: #8E869B;
+        font-size: 8px;
+    }
+
+    .data-card-one {
+        right: -20px;
+        top: 52px;
+    }
+
+    .data-card-two {
+        left: -60px;
+        top: 200px;
+        animation-delay: 1.2s;
+    }
+
+    .data-card-three {
+        right: -45px;
+        bottom: 52px;
+        animation-delay: 2.2s;
+    }
+
+    .data-card-four {
+        left: -30px;
+        bottom: 62px;
+        animation-delay: 3s;
+    }
+
+    @keyframes cardFloat {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-7px); }
+    }
+
+    /* =========================================================
+       SEARCH BAR
+       ========================================================= */
+
+    .search-strip {
+        position: relative;
+        z-index: 10;
+        margin-top: -34px;
+    }
+
+    .search-panel {
+        background: white;
+        border: 1px solid var(--nexus-border);
+        border-radius: 17px;
+        padding: 10px;
+        box-shadow: 0 24px 70px rgba(37,15,74,0.13);
+    }
+
+    .search-inner {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .search-input-wrap {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 0 16px;
+    }
+
+    .search-input-wrap i {
+        color: var(--nexus-purple);
+    }
+
+    .search-input {
+        width: 100%;
+        border: none;
+        outline: none;
+        height: 48px;
+        color: var(--nexus-text);
+        font-size: 13px;
+    }
+
+    .search-input::placeholder {
+        color: #9A93A2;
+    }
+
+    .search-button {
+        height: 48px;
+        border: none;
+        border-radius: 10px;
+        padding: 0 25px;
+        color: white;
+        background: var(--nexus-purple);
+        font-size: 13px;
+        font-weight: 700;
+        transition: 0.25s ease;
+    }
+
+    .search-button:hover {
+        background: var(--nexus-purple-dark);
+        transform: translateY(-1px);
+    }
+
+    /* =========================================================
+       COMMON SECTION STYLES
+       ========================================================= */
+
+    section {
+        scroll-margin-top: 90px;
+    }
+
+    .section-padding {
+        padding: 105px 0;
+    }
+
+    .section-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--nexus-purple);
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 1.7px;
+        text-transform: uppercase;
+        margin-bottom: 14px;
+    }
+
+    .section-label::before {
+        content: "";
+        width: 22px;
+        height: 1px;
+        background: var(--nexus-violet);
+    }
+
+    .section-title {
+        max-width: 750px;
+        font-family: "Manrope", sans-serif;
+        font-size: clamp(32px, 4vw, 49px);
+        line-height: 1.12;
+        letter-spacing: -2px;
+        font-weight: 800;
+        margin-bottom: 18px;
+    }
+
+    .section-description {
+        max-width: 690px;
+        color: var(--nexus-muted);
+        line-height: 1.8;
+        font-size: 14px;
+    }
+
+    /* =========================================================
+       STATISTICS
+       ========================================================= */
+
+    .stats-section {
+        padding: 42px 0;
+        background: var(--nexus-off-white);
+        border-bottom: 1px solid var(--nexus-border);
+    }
+
+    .stat-item {
+        position: relative;
+        padding: 10px 25px;
+        text-align: center;
+    }
+
+    .stat-item:not(:last-child)::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        top: 10%;
+        height: 80%;
+        width: 1px;
+        background: var(--nexus-border);
+    }
+
+    .stat-number {
+        font-family: "Manrope", sans-serif;
+        font-size: 29px;
+        font-weight: 800;
+        color: var(--nexus-text);
+        letter-spacing: -1px;
+    }
+
+    .stat-number span {
+        color: var(--nexus-purple);
+    }
+
+    .stat-label {
+        color: var(--nexus-muted);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+        margin-top: 4px;
+    }
+
+    .demo-label {
+        font-size: 8px;
+        color: #958E9D;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-top: 5px;
+    }
+
+    /* =========================================================
+       WHAT IS NEXUS
+       ========================================================= */
+
+    .nexus-overview {
+        background: white;
+    }
+
+    .overview-panel {
+        position: relative;
+        min-height: 420px;
+        padding: 35px;
+        border-radius: 22px;
+        background: linear-gradient(145deg, #160C2B, #0B0717);
+        overflow: hidden;
+    }
+
+    .overview-panel::before {
+        content: "";
+        position: absolute;
+        width: 370px;
+        height: 370px;
+        border: 1px solid rgba(167,139,250,0.10);
+        border-radius: 50%;
+        right: -100px;
+        top: -110px;
+    }
+
+    .overview-panel::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        opacity: 0.13;
+        background-image:
+            linear-gradient(rgba(167,139,250,0.2) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(167,139,250,0.2) 1px, transparent 1px);
+        background-size: 38px 38px;
+    }
+
+    .overview-content {
+        position: relative;
+        z-index: 2;
+    }
+
+    .overview-mini-label {
+        color: #A78BFA;
+        font-size: 9px;
+        letter-spacing: 1.6px;
+        font-weight: 800;
+        text-transform: uppercase;
+        margin-bottom: 14px;
+    }
+
+    .overview-content h3 {
+        color: white;
+        font-family: "Manrope", sans-serif;
+        font-size: 28px;
+        line-height: 1.25;
+        max-width: 450px;
+        letter-spacing: -1px;
+    }
+
+    .overview-content p {
+        color: #AAA1B7;
+        max-width: 500px;
+        font-size: 12px;
+        line-height: 1.8;
+    }
+
+    .overview-flow {
+        position: absolute;
+        z-index: 3;
+        right: 28px;
+        bottom: 28px;
+        width: 220px;
+    }
+
+    .flow-mini-card {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px;
+        margin-top: 7px;
+        background: rgba(255,255,255,0.055);
+        border: 1px solid rgba(255,255,255,0.09);
+        border-radius: 9px;
+    }
+
+    .flow-mini-card i {
+        color: #A78BFA;
+        font-size: 11px;
+    }
+
+    .flow-mini-card span {
+        color: #D3CCDD;
+        font-size: 9px;
+        font-weight: 600;
+    }
+
+    /* =========================================================
+       BEFORE / AFTER
+       ========================================================= */
+
+    .comparison-section {
+        background: var(--nexus-off-white);
+    }
+
+    .comparison-card {
+        height: 100%;
+        padding: 30px;
+        border-radius: var(--nexus-radius);
+        background: white;
+        border: 1px solid var(--nexus-border);
+    }
+
+    .comparison-card.before {
+        background: #FBFAFC;
+    }
+
+    .comparison-card.after {
+        border-color: #DDD0F7;
+        box-shadow: var(--nexus-shadow);
+    }
+
+    .comparison-heading {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 25px;
+    }
+
+    .comparison-heading h3 {
+        font-family: "Manrope", sans-serif;
+        font-size: 18px;
+        font-weight: 800;
+        margin: 0;
+    }
+
+    .comparison-badge {
+        font-size: 8px;
+        font-weight: 800;
+        letter-spacing: 1px;
+        padding: 6px 9px;
+        border-radius: 7px;
+        text-transform: uppercase;
+    }
+
+    .before .comparison-badge {
+        color: #7C6F82;
+        background: #F0EDF2;
+    }
+
+    .after .comparison-badge {
+        color: var(--nexus-purple);
+        background: var(--nexus-light);
+    }
+
+    .comparison-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .comparison-list li {
+        display: flex;
+        align-items: center;
+        gap: 13px;
+        padding: 13px 0;
+        border-bottom: 1px solid #F0EDF3;
+        font-size: 12px;
+        color: var(--nexus-muted);
+    }
+
+    .comparison-list li:last-child {
+        border-bottom: none;
+    }
+
+    .comparison-list i {
+        width: 27px;
+        height: 27px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 7px;
+        font-size: 10px;
+    }
+
+    .before .comparison-list i {
+        color: #958A9B;
+        background: #F0EDF2;
+    }
+
+    .after .comparison-list i {
+        color: var(--nexus-purple);
+        background: var(--nexus-light);
+    }
+
+    /* =========================================================
+       PROCUREMENT LIFECYCLE
+       ========================================================= */
+
+    .lifecycle-section {
+        background: white;
+    }
+
+    .lifecycle-track {
+        position: relative;
+        margin-top: 55px;
+    }
+
+    .lifecycle-track::before {
+        content: "";
+        position: absolute;
+        top: 28px;
+        left: 5%;
+        right: 5%;
+        height: 1px;
+        background: linear-gradient(
+            90deg,
+            var(--nexus-border),
+            var(--nexus-soft),
+            var(--nexus-border)
+        );
+    }
+
+    .lifecycle-item {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        padding: 0 7px;
+    }
+
+    .lifecycle-number {
+        width: 56px;
+        height: 56px;
+        margin: 0 auto 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: white;
+        border: 1px solid #DCCDF5;
+        color: var(--nexus-purple);
+        font-family: "Manrope", sans-serif;
+        font-size: 12px;
+        font-weight: 800;
+        box-shadow: 0 7px 22px rgba(74, 39, 117, 0.08);
+    }
+
+    .lifecycle-item h4 {
+        font-family: "Manrope", sans-serif;
+        font-size: 12px;
+        font-weight: 800;
+        margin-bottom: 7px;
+    }
+
+    .lifecycle-item p {
+        color: var(--nexus-muted);
+        font-size: 9px;
+        line-height: 1.55;
+        margin: 0;
+    }
+
+    .lifecycle-icon {
+        font-size: 10px;
+        color: var(--nexus-violet);
+        margin-bottom: 8px;
+    }
+
+    /* =========================================================
+       BUYER SECTION
+       ========================================================= */
+
+    .buyer-section {
+        background: var(--nexus-off-white);
+    }
+
+    .capability-list {
+        list-style: none;
+        padding: 0;
+        margin: 28px 0 0;
+    }
+
+    .capability-list li {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+        margin-bottom: 13px;
+        font-size: 12px;
+        color: #504958;
+    }
+
+    .capability-list i {
+        width: 23px;
+        height: 23px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--nexus-purple);
+        background: var(--nexus-light);
+        border-radius: 6px;
+        font-size: 9px;
+    }
+
+    .procurement-mockup {
+        position: relative;
+        padding: 22px;
+        border: 1px solid var(--nexus-border);
+        border-radius: 18px;
+        background: white;
+        box-shadow: var(--nexus-shadow);
+    }
+
+    .mockup-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 17px;
+        border-bottom: 1px solid var(--nexus-border);
+    }
+
+    .mockup-title {
+        font-size: 11px;
+        font-weight: 800;
+    }
+
+    .mockup-status {
+        padding: 5px 8px;
+        color: var(--nexus-success);
+        background: var(--nexus-success-bg);
+        border-radius: 6px;
+        font-size: 8px;
+        font-weight: 800;
+    }
+
+    .requirement-main {
+        padding: 22px 0;
+    }
+
+    .requirement-label {
+        color: var(--nexus-muted);
+        font-size: 9px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+    }
+
+    .requirement-title {
+        font-family: "Manrope", sans-serif;
+        font-size: 21px;
+        font-weight: 800;
+        margin: 6px 0 18px;
+    }
+
+    .mockup-metric {
+        padding: 13px;
+        border-radius: 10px;
+        background: var(--nexus-off-white);
+        border: 1px solid #F0ECF4;
+    }
+
+    .mockup-metric span {
+        display: block;
+        color: var(--nexus-muted);
+        font-size: 8px;
+        margin-bottom: 5px;
+    }
+
+    .mockup-metric strong {
+        font-family: "Manrope", sans-serif;
+        font-size: 14px;
+    }
+
+    .best-offer {
+        margin-top: 12px;
+        padding: 13px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 10px;
+        background: linear-gradient(100deg, #F3EEFF, #FAF8FF);
+        border: 1px solid #E3D8F7;
+    }
+
+    .best-offer small {
+        display: block;
+        color: var(--nexus-muted);
+        font-size: 8px;
+    }
+
+    .best-offer strong {
+        font-size: 13px;
+    }
+
+    /* =========================================================
+       VENDOR SECTION
+       ========================================================= */
+
+    .vendor-section {
+        background: white;
+    }
+
+    .vendor-dashboard {
+        padding: 25px;
+        border-radius: 19px;
+        background: #FCFBFE;
+        border: 1px solid var(--nexus-border);
+        box-shadow: var(--nexus-shadow);
+    }
+
+    .vendor-profile-header {
+        display: flex;
+        align-items: center;
+        gap: 13px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid var(--nexus-border);
+    }
+
+    .vendor-avatar {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        background: linear-gradient(135deg, var(--nexus-purple), var(--nexus-violet));
+        font-size: 17px;
+    }
+
+    .vendor-profile-header h4 {
+        font-family: "Manrope", sans-serif;
+        font-size: 15px;
+        font-weight: 800;
+        margin: 0 0 4px;
+    }
+
+    .verified {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        color: var(--nexus-success);
+        font-size: 8px;
+        font-weight: 800;
+        text-transform: uppercase;
+    }
+
+    .vendor-stat {
+        padding: 15px 5px;
+        text-align: center;
+        border-right: 1px solid var(--nexus-border);
+    }
+
+    .vendor-stat:last-child {
+        border-right: none;
+    }
+
+    .vendor-stat strong {
+        display: block;
+        font-family: "Manrope", sans-serif;
+        font-size: 16px;
+        margin-bottom: 4px;
+    }
+
+    .vendor-stat span {
+        color: var(--nexus-muted);
+        font-size: 8px;
+    }
+
+    .performance-row {
+        margin-top: 18px;
+    }
+
+    .performance-head {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 7px;
+        font-size: 9px;
+        font-weight: 700;
+    }
+
+    .performance-bar {
+        height: 5px;
+        background: #EDE9F1;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .performance-bar div {
+        height: 100%;
+        border-radius: 10px;
+        background: linear-gradient(90deg, var(--nexus-purple), var(--nexus-violet));
+    }
+
+    .vendor-actions {
+        display: flex;
+        gap: 8px;
+        margin-top: 20px;
+    }
+
+    .vendor-action {
+        flex: 1;
+        border: 1px solid var(--nexus-border);
+        background: white;
+        color: var(--nexus-text);
+        padding: 9px 5px;
+        border-radius: 8px;
+        font-size: 8px;
+        font-weight: 700;
+        text-align: center;
+    }
+
+    .vendor-action:hover {
+        color: var(--nexus-purple);
+        border-color: #D6C6F2;
+    }
+
+    /* =========================================================
+       REPUTATION
+       ========================================================= */
+
+    .reputation-section {
+        background: var(--nexus-deep);
+        color: white;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .reputation-section::before {
+        content: "";
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        border: 1px solid rgba(167,139,250,0.08);
+        border-radius: 50%;
+        right: -150px;
+        top: -160px;
+    }
+
+    .reputation-section .section-label {
+        color: #A78BFA;
+    }
+
+    .reputation-section .section-title {
+        color: white;
+    }
+
+    .reputation-section .section-description {
+        color: #A69EAE;
+    }
+
+    .reputation-card {
+        position: relative;
+        z-index: 2;
+        padding: 28px;
+        border: 1px solid rgba(255,255,255,0.10);
+        border-radius: 18px;
+        background: rgba(255,255,255,0.045);
+        backdrop-filter: blur(12px);
+    }
+
+    .reputation-flow {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 23px;
+    }
+
+    .rep-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        padding: 8px 10px;
+        border: 1px solid rgba(255,255,255,0.09);
+        border-radius: 8px;
+        color: #C7C0D0;
+        font-size: 9px;
+        background: rgba(255,255,255,0.035);
+    }
+
+    .rep-chip i {
+        color: #A78BFA;
+        font-size: 9px;
+    }
+
+    .reputation-result {
+        padding: 19px;
+        border-radius: 12px;
+        background: rgba(109,40,217,0.15);
+        border: 1px solid rgba(167,139,250,0.17);
+    }
+
+    .reputation-result small {
+        display: block;
+        color: #958BA0;
+        font-size: 8px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 6px;
+    }
+
+    .reputation-result strong {
+        font-family: "Manrope", sans-serif;
+        font-size: 22px;
+    }
+
+    /* =========================================================
+       MARKETPLACE
+       ========================================================= */
+
+    .marketplace-section {
+        background: white;
+    }
+
+    .market-search-box {
+        padding: 12px;
+        border: 1px solid var(--nexus-border);
+        border-radius: 13px;
+        display: flex;
+        gap: 9px;
+        max-width: 850px;
+        margin: 35px auto 30px;
+        box-shadow: 0 12px 35px rgba(44,20,75,0.06);
+    }
+
+    .market-search-box input {
+        flex: 1;
+        min-width: 0;
+        border: none;
+        outline: none;
+        font-size: 12px;
+        padding: 0 9px;
+    }
+
+    .market-search-box button {
+        border: none;
+        background: var(--nexus-purple);
+        color: white;
+        padding: 11px 20px;
+        border-radius: 8px;
+        font-size: 10px;
+        font-weight: 700;
+    }
+
+    .filter-row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 7px;
+        margin-bottom: 38px;
+    }
+
+    .filter-chip {
+        padding: 7px 11px;
+        border: 1px solid var(--nexus-border);
+        border-radius: 7px;
+        background: white;
+        color: var(--nexus-muted);
+        font-size: 8px;
+        font-weight: 700;
+    }
+
+    .filter-chip i {
+        color: var(--nexus-purple);
+        margin-right: 4px;
+    }
+
+    .category-card {
+        height: 100%;
+        padding: 22px 17px;
+        border: 1px solid var(--nexus-border);
+        border-radius: 13px;
+        transition: all 0.25s ease;
+        background: white;
+    }
+
+    .category-card:hover {
+        transform: translateY(-5px);
+        border-color: #D5C5F1;
+        box-shadow: 0 16px 35px rgba(64,30,99,0.08);
+    }
+
+    .category-icon {
+        width: 39px;
+        height: 39px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        color: var(--nexus-purple);
+        background: var(--nexus-light);
+        margin-bottom: 15px;
+    }
+
+    .category-card h4 {
+        font-family: "Manrope", sans-serif;
+        font-size: 12px;
+        font-weight: 800;
+        margin-bottom: 5px;
+    }
+
+    .category-card p {
+        color: var(--nexus-muted);
+        font-size: 9px;
+        margin: 0;
+        line-height: 1.5;
+    }
+
+    /* =========================================================
+       VENDOR DIRECTORY
+       ========================================================= */
+
+    .vendor-directory {
+        background: var(--nexus-off-white);
+    }
+
+    .directory-card {
+        height: 100%;
+        padding: 21px;
+        border: 1px solid var(--nexus-border);
+        border-radius: 14px;
+        background: white;
+        transition: 0.25s ease;
+    }
+
+    .directory-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--nexus-shadow);
+        border-color: #D7C9F0;
+    }
+
+    .directory-header {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+        margin-bottom: 15px;
+    }
+
+    .directory-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 9px;
+        background: var(--nexus-light);
+        color: var(--nexus-purple);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 13px;
+    }
+
+    .directory-header h4 {
+        font-size: 11px;
+        font-weight: 800;
+        margin: 0 0 4px;
+    }
+
+    .directory-header span {
+        color: var(--nexus-muted);
+        font-size: 8px;
+    }
+
+    .verified-pill {
+        margin-left: auto;
+        color: var(--nexus-success);
+        background: var(--nexus-success-bg);
+        border-radius: 6px;
+        padding: 5px 7px;
+        font-size: 7px;
+        font-weight: 800;
+    }
+
+    .directory-details {
+        display: flex;
+        justify-content: space-between;
+        border-top: 1px solid #F0EDF3;
+        padding-top: 14px;
+    }
+
+    .directory-details div {
+        color: var(--nexus-muted);
+        font-size: 8px;
+    }
+
+    .directory-details strong {
+        display: block;
+        color: var(--nexus-text);
+        font-size: 10px;
+        margin-bottom: 2px;
+    }
+
+    .rating {
+        color: #A66B00 !important;
+    }
+
+    /* =========================================================
+       BUSINESS ARCHITECTURE
+       ========================================================= */
+
+    .architecture-section {
+        padding: 110px 0;
+        background: white;
+    }
+
+    .architecture-wrapper {
+        margin-top: 55px;
+        padding: 42px 25px;
+        border: 1px solid var(--nexus-border);
+        border-radius: 20px;
+        background:
+            radial-gradient(circle at center, rgba(109,40,217,0.045), transparent 50%),
+            #FCFBFE;
+    }
+
+    .architecture-step {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .architecture-node {
+        min-width: 155px;
+        padding: 15px 17px;
+        border: 1px solid #DDD3E8;
+        border-radius: 11px;
+        background: white;
+        box-shadow: 0 8px 22px rgba(53,26,80,0.05);
+        text-align: center;
+    }
+
+    .architecture-node strong {
+        display: block;
+        font-family: "Manrope", sans-serif;
+        font-size: 11px;
+        font-weight: 800;
+    }
+
+    .architecture-node span {
+        display: block;
+        color: var(--nexus-muted);
+        font-size: 7px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-top: 5px;
+    }
+
+    .architecture-node.highlight {
+        color: white;
+        border-color: var(--nexus-purple);
+        background: linear-gradient(135deg, var(--nexus-purple), var(--nexus-violet));
+        box-shadow: 0 12px 30px rgba(109,40,217,0.20);
+    }
+
+    .architecture-node.highlight span {
+        color: #DDD0FF;
+    }
+
+    .architecture-arrow {
+        color: var(--nexus-soft);
+        font-size: 12px;
+    }
+
+    .architecture-caption {
+        text-align: center;
+        margin-top: 30px;
+        color: var(--nexus-muted);
+        font-size: 10px;
+    }
+
+    .architecture-caption span {
+        color: var(--nexus-purple);
+        font-weight: 800;
+    }
+
+    /* =========================================================
+       WHY NEXUS
+       ========================================================= */
+
+    .why-section {
+        background: var(--nexus-off-white);
+    }
+
+    .why-card {
+        height: 100%;
+        padding: 27px;
+        border: 1px solid var(--nexus-border);
+        border-radius: 15px;
+        background: white;
+        transition: 0.25s ease;
+    }
+
+    .why-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 16px 35px rgba(48,22,78,0.07);
+    }
+
+    .why-icon {
+        width: 42px;
+        height: 42px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--nexus-purple);
+        background: var(--nexus-light);
+        border-radius: 10px;
+        margin-bottom: 18px;
+    }
+
+    .why-card h4 {
+        font-family: "Manrope", sans-serif;
+        font-size: 13px;
+        font-weight: 800;
+        margin-bottom: 8px;
+    }
+
+    .why-card p {
+        color: var(--nexus-muted);
+        font-size: 10px;
+        line-height: 1.7;
+        margin: 0;
+    }
+
+    /* =========================================================
+       SECURITY
+       ========================================================= */
+
+    .security-section {
+        background: white;
+    }
+
+    .security-panel {
+        margin-top: 45px;
+        padding: 32px;
+        border-radius: 18px;
+        background: #FDFBFF;
+        border: 1px solid #E3DAEB;
+    }
+
+    .security-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 15px 8px;
+    }
+
+    .security-item i {
+        color: var(--nexus-purple);
+        font-size: 14px;
+    }
+
+    .security-item strong {
+        display: block;
+        font-size: 11px;
+        margin-bottom: 3px;
+    }
+
+    .security-item span {
+        color: var(--nexus-muted);
+        font-size: 8px;
+    }
+
+    .security-note {
+        padding: 16px;
+        border-radius: 10px;
+        background: var(--nexus-light);
+        color: #55446E;
+        font-size: 9px;
+        line-height: 1.6;
+    }
+
+    /* =========================================================
+       ADMIN MANAGER
+       ========================================================= */
+
+    .operations-section {
+        background: var(--nexus-deep);
+        color: white;
+    }
+
+    .operations-section .section-title {
+        color: white;
+    }
+
+    .operations-section .section-description {
+        color: #A8A0B1;
+    }
+
+    .role-card {
+        height: 100%;
+        padding: 29px;
+        border: 1px solid rgba(255,255,255,0.09);
+        border-radius: 16px;
+        background: rgba(255,255,255,0.04);
+    }
+
+    .role-top {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 22px;
+    }
+
+    .role-icon {
+        width: 42px;
+        height: 42px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #C4B5FD;
+        background: rgba(139,92,246,0.12);
+    }
+
+    .role-top h4 {
+        font-family: "Manrope", sans-serif;
+        font-size: 15px;
+        font-weight: 800;
+        margin: 0;
+    }
+
+    .role-top span {
+        display: block;
+        color: #8D8496;
+        font-size: 8px;
+        margin-top: 3px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .role-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .role-list li {
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(255,255,255,0.07);
+        color: #B7AFBF;
+        font-size: 10px;
+    }
+
+    .role-list li:last-child {
+        border-bottom: none;
+    }
+
+    .role-list i {
+        color: #A78BFA;
+        font-size: 8px;
+        margin-right: 8px;
+    }
+
+    /* =========================================================
+       FINAL PROJECT OUTPUT
+       ========================================================= */
+
+    .output-section {
+        background: white;
+    }
+
+    .output-card {
+        height: 100%;
+        padding: 25px;
+        border: 1px solid var(--nexus-border);
+        border-radius: 14px;
+        background: white;
+    }
+
+    .output-card.system {
+        background: linear-gradient(145deg, #F4EEFF, #FCFAFF);
+        border-color: #DCCDF4;
+    }
+
+    .output-card h4 {
+        font-family: "Manrope", sans-serif;
+        font-size: 14px;
+        font-weight: 800;
+        margin-bottom: 16px;
+    }
+
+    .output-card h4 i {
+        color: var(--nexus-purple);
+        margin-right: 8px;
+    }
+
+    .output-card ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .output-card li {
+        color: var(--nexus-muted);
+        font-size: 9px;
+        padding: 7px 0;
+        border-bottom: 1px solid #F0EDF3;
+    }
+
+    .output-card li:last-child {
+        border-bottom: none;
+    }
+
+    /* =========================================================
+       FINAL CTA
+       ========================================================= */
+
+    .final-cta {
+        padding: 95px 0;
+        background:
+            radial-gradient(circle at 50% 0%, rgba(139,92,246,0.26), transparent 38%),
+            var(--nexus-dark);
+        color: white;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .final-cta::before,
+    .final-cta::after {
+        content: "";
+        position: absolute;
+        border: 1px solid rgba(167,139,250,0.10);
+        border-radius: 50%;
+    }
+
+    .final-cta::before {
+        width: 520px;
+        height: 520px;
+        left: -270px;
+        top: -180px;
+    }
+
+    .final-cta::after {
+        width: 430px;
+        height: 430px;
+        right: -220px;
+        bottom: -210px;
+    }
+
+    .final-cta-content {
+        position: relative;
+        z-index: 2;
+    }
+
+    .final-cta .section-label {
+        color: #A78BFA;
+        justify-content: center;
+    }
+
+    .final-cta .section-label::before {
+        display: none;
+    }
+
+    .final-cta h2 {
+        max-width: 680px;
+        margin: 0 auto 18px;
+        font-family: "Manrope", sans-serif;
+        font-size: clamp(35px, 5vw, 57px);
+        line-height: 1.08;
+        letter-spacing: -2.5px;
+    }
+
+    .final-cta p {
+        max-width: 580px;
+        margin: 0 auto 30px;
+        color: #AAA2B5;
+        font-size: 13px;
+        line-height: 1.7;
+    }
+
+    .cta-buttons {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    /* =========================================================
+       FOOTER
+       ========================================================= */
+
+    footer {
+        background: #08050F;
+        color: white;
+        padding: 65px 0 25px;
+    }
+
+    .footer-brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-family: "Manrope", sans-serif;
+        font-weight: 800;
+        font-size: 16px;
+        margin-bottom: 16px;
+    }
+
+    .footer-description {
+        max-width: 260px;
+        color: #837B8D;
+        font-size: 10px;
+        line-height: 1.7;
+    }
+
+    .footer-column h5 {
+        color: #E9E4EF;
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 1px;
+        margin-bottom: 17px;
+    }
+
+    .footer-column a {
+        display: block;
+        color: #837B8D;
+        font-size: 10px;
+        margin-bottom: 10px;
+        transition: 0.2s ease;
+    }
+
+    .footer-column a:hover {
+        color: #C4B5FD;
+        padding-left: 2px;
+    }
+
+    .footer-socials {
+        display: flex;
+        gap: 7px;
+        margin-top: 20px;
+    }
+
+    .social-link {
+        width: 31px;
+        height: 31px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(255,255,255,0.09);
+        border-radius: 8px;
+        color: #9A91A2;
+        font-size: 11px;
+        transition: 0.2s ease;
+    }
+
+    .social-link:hover {
+        color: #C4B5FD;
+        border-color: rgba(167,139,250,0.35);
+        background: rgba(139,92,246,0.08);
+    }
+
+    .footer-bottom {
+        margin-top: 45px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255,255,255,0.07);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: #6D6675;
+        font-size: 9px;
+    }
+
+    .footer-bottom-links {
+        display: flex;
+        gap: 17px;
+    }
+
+    .footer-bottom-links a {
+        color: #6D6675;
+    }
+
+    .footer-bottom-links a:hover {
+        color: #A78BFA;
+    }
+
+    /* =========================================================
+       SCROLL REVEAL
+       ========================================================= */
+
+    .reveal {
+        opacity: 0;
+        transform: translateY(25px);
+        transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+
+    @media (max-width: 1199px) {
+
+        .hero {
+            min-height: auto;
+        }
+
+        .network-wrapper {
+            min-height: 470px;
+            margin-top: 35px;
+        }
+
+        .network-stage {
+            transform: scale(0.9);
+        }
+
+        .lifecycle-track::before {
+            display: none;
+        }
+
+        .lifecycle-item {
+            margin-bottom: 35px;
+        }
+    }
+
+    @media (max-width: 991px) {
+
+        .navbar-nav {
+            padding-top: 15px;
+        }
+
+        .navbar-actions {
+            padding-top: 12px;
+            flex-wrap: wrap;
+        }
+
+        .hero {
+            padding-top: 135px;
+        }
+
+        .hero h1 {
+            letter-spacing: -2.5px;
+        }
+
+        .network-wrapper {
+            min-height: 430px;
+        }
+
+        .network-stage {
+            transform: scale(0.82);
+        }
+
+        .overview-flow {
+            position: relative;
+            right: auto;
+            bottom: auto;
+            margin-top: 35px;
+            width: 100%;
+        }
+
+        .overview-panel {
+            min-height: auto;
+        }
+
+        .architecture-step {
+            flex-wrap: wrap;
+        }
+
+        .architecture-arrow {
+            transform: rotate(90deg);
+        }
+    }
+
+    @media (max-width: 767px) {
+
+        .nexus-navbar {
+            padding: 12px 0;
+        }
+
+        .hero {
+            padding: 120px 0 70px;
+        }
+
+        .hero h1 {
+            font-size: 43px;
+            letter-spacing: -2.2px;
+        }
+
+        .hero-description {
+            font-size: 14px;
+        }
+
+        .hero-buttons {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .primary-btn,
+        .secondary-btn {
+            width: 100%;
+        }
+
+        .network-wrapper {
+            min-height: 390px;
+            margin-top: 25px;
+            overflow: hidden;
+        }
+
+        .network-stage {
+            transform: scale(0.65);
+        }
+
+        .floating-data-card {
+            display: none;
+        }
+
+        .search-strip {
+            margin-top: -20px;
+        }
+
+        .search-inner {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .search-input-wrap {
+            width: 100%;
+        }
+
+        .search-button {
+            width: 100%;
+        }
+
+        .section-padding {
+            padding: 75px 0;
+        }
+
+        .section-title {
+            letter-spacing: -1.4px;
+        }
+
+        .stat-item {
+            padding: 15px 5px;
+        }
+
+        .stat-item:not(:last-child)::after {
+            display: none;
+        }
+
+        .stat-number {
+            font-size: 22px;
+        }
+
+        .lifecycle-item {
+            margin-bottom: 28px;
+        }
+
+        .vendor-stat {
+            border-right: none;
+            border-bottom: 1px solid var(--nexus-border);
+        }
+
+        .vendor-stat:last-child {
+            border-bottom: none;
+        }
+
+        .architecture-node {
+            width: 100%;
+        }
+
+        .architecture-arrow {
+            width: 100%;
+            text-align: center;
+            transform: rotate(90deg);
+        }
+
+        .footer-bottom {
+            flex-direction: column;
+            gap: 15px;
+            align-items: flex-start;
+        }
+
+        .footer-column {
+            margin-top: 25px;
+        }
+
+        .market-search-box {
+            flex-direction: column;
+        }
+
+        .market-search-box button {
+            width: 100%;
+        }
+    }
+
+    @media (max-width: 480px) {
+
+        .brand-mark {
+            width: 35px;
+            height: 35px;
+        }
+
+        .navbar-brand {
+            font-size: 15px;
+        }
+
+        .hero h1 {
+            font-size: 38px;
+        }
+
+        .network-stage {
+            transform: scale(0.56);
+        }
+
+        .network-wrapper {
+            min-height: 340px;
+        }
+
+        .overview-panel {
+            padding: 25px;
+        }
+
+        .comparison-card {
+            padding: 23px;
+        }
+
+        .reputation-card {
+            padding: 21px;
+        }
+    }
+
+</style>
+</head> <body> <!-- ========================================================= NAVBAR ========================================================= --> <header> <nav class="navbar navbar-expand-lg nexus-navbar" id="mainNavbar"> <div class="container">
+        <a class="navbar-brand" href="/">
+            <div class="brand-mark">
+                <i class="fa-solid fa-network-wired"></i>
+            </div>
+
+            <span>
+                NEXUS PROCUREMENT
+                <small>OPEN B2B PROCUREMENT NETWORK</small>
+            </span>
+        </a>
+
+        <button class="navbar-toggler border-0 shadow-none"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#nexusNavigation"
+                aria-controls="nexusNavigation"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+            <i class="fa-solid fa-bars" style="color:#17121F;"></i>
+        </button>
+
+        <div class="collapse navbar-collapse" id="nexusNavigation">
+
+            <ul class="navbar-nav mx-auto align-items-lg-center">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#solutions">Explore</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#how-it-works">How It Works</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/products">Products</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/vendors">Vendors</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">About</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact</a>
+                </li>
+
+            </ul>
+
+            <div class="navbar-actions d-flex align-items-center gap-2">
+
+                <a href="/search"
+                   class="nav-search"
+                   aria-label="Search marketplace">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </a>
+
+                <a href="/login" class="login-btn">
+                    Login
+                </a>
+
+                <a href="/register/buyer"
+                   class="get-started-btn">
+                    Get Started
+                </a>
+
+            </div>
+
+        </div>
+    </div>
+</nav>
+</header> <main> <!-- ========================================================= HERO ========================================================= --> <section class="hero" id="solutions">
+<div class="hero-grid"></div>
+<div class="hero-glow"></div>
+
+<div class="container hero-content">
+
+    <div class="row align-items-center">
+
+        <div class="col-lg-6">
+
+            <div class="hero-eyebrow">
+                <span class="eyebrow-dot"></span>
+                Open B2B Procurement Network
+            </div>
+
+            <h1>
+                Procurement, Connected.
+                <span class="gradient-text">
+                    Business, Accelerated.
+                </span>
+            </h1>
+
+            <p class="hero-description">
+                Nexus Procurement connects buyers with verified vendors through
+                structured requirements, competitive quotations and
+                end-to-end procurement workflows.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="/register/buyer"
+                   class="primary-btn">
+                    <i class="fa-solid fa-arrow-right"></i>
+                    Start Procuring
+                </a>
+
+                <a href="/register/vendor"
+                   class="secondary-btn">
+                    <i class="fa-solid fa-store"></i>
+                    Become a Vendor
+                </a>
+
+                <a href="/search"
+                   class="secondary-btn">
+                    <i class="fa-solid fa-compass"></i>
+                    Explore Marketplace
+                </a>
+
+            </div>
+
+            <div class="hero-note">
+                <i class="fa-solid fa-circle-check"></i>
+                Structured procurement for modern businesses
+            </div>
+
+        </div>
+
+
+        <!-- NETWORK VISUAL -->
+
+        <div class="col-lg-6">
+
+            <div class="network-wrapper">
+
+                <div class="network-stage">
+
+                    <div class="network-ring ring-one"></div>
+                    <div class="network-ring ring-two"></div>
+                    <div class="network-ring ring-three"></div>
+
+                    <div class="network-line line-1"></div>
+                    <div class="network-line line-2"></div>
+                    <div class="network-line line-3"></div>
+                    <div class="network-line line-4"></div>
+                    <div class="network-line line-5"></div>
+                    <div class="network-line line-6"></div>
+                    <div class="network-line line-7"></div>
+                    <div class="network-line line-8"></div>
+
+
+                    <div class="network-center">
+                        <strong>NEXUS</strong>
+                        <span>PROCUREMENT CORE</span>
+                    </div>
+
+
+                    <div class="network-node node-top">
+                        <i class="fa-solid fa-user-tie"></i>
+                        <span>BUYER</span>
+                    </div>
+
+                    <div class="network-node node-right-top">
+                        <i class="fa-solid fa-building"></i>
+                        <span>VENDOR</span>
+                    </div>
+
+                    <div class="network-node node-right-bottom">
+                        <i class="fa-solid fa-box"></i>
+                        <span>PRODUCT</span>
+                    </div>
+
+                    <div class="network-node node-bottom">
+                        <i class="fa-solid fa-truck-fast"></i>
+                        <span>DELIVERY</span>
+                    </div>
+
+                    <div class="network-node node-left-bottom">
+                        <i class="fa-solid fa-file-invoice"></i>
+                        <span>QUOTATION</span>
+                    </div>
+
+                    <div class="network-node node-left-top">
+                        <i class="fa-solid fa-clipboard-list"></i>
+                        <span>REQUIREMENT</span>
+                    </div>
+
+
+                    <!-- Demo cards -->
+
+                    <div class="floating-data-card data-card-one">
+                        <div class="data-icon">
+                            <i class="fa-solid fa-file-circle-check"></i>
+                        </div>
+                        <div>
+                            <strong>12 Quotations Received</strong>
+                            <span>Demonstration UI</span>
+                        </div>
+                    </div>
+
+                    <div class="floating-data-card data-card-two">
+                        <div class="data-icon">
+                            <i class="fa-solid fa-shield-check"></i>
+                        </div>
+                        <div>
+                            <strong>Vendor Verified</strong>
+                            <span>Verification status</span>
+                        </div>
+                    </div>
+
+                    <div class="floating-data-card data-card-three">
+                        <div class="data-icon">
+                            <i class="fa-solid fa-truck"></i>
+                        </div>
+                        <div>
+                            <strong>Delivery On Track</strong>
+                            <span>Fulfillment status</span>
+                        </div>
+                    </div>
+
+                    <div class="floating-data-card data-card-four">
+                        <div class="data-icon">
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <div>
+                            <strong>Rating 4.8 / 5</strong>
+                            <span>Performance signal</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+</section> <!-- ========================================================= MARKETPLACE SEARCH ========================================================= --> <section class="search-strip">
+<div class="container">
+
+    <div class="search-panel">
+
+        <form class="search-inner"
+              action="/search"
+              method="get">
+
+            <div class="search-input-wrap">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                        class="search-input"
+                        type="search"
+                        name="q"
+                        placeholder="Search products, suppliers or categories..."
+                        aria-label="Search products, suppliers or categories">
+
+            </div>
+
+            <button class="search-button"
+                    type="submit">
+                Search Marketplace
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+</section> <!-- ========================================================= STATISTICS ========================================================= --> <section class="stats-section">
+<div class="container">
+
+    <div class="row g-0">
+
+        <div class="col-6 col-md stat-item">
+            <div class="stat-number">
+                <span>500+</span>
+            </div>
+            <div class="stat-label">Verified Vendors</div>
+            <div class="demo-label">Demo value</div>
+        </div>
+
+        <div class="col-6 col-md stat-item">
+            <div class="stat-number">
+                <span>10K+</span>
+            </div>
+            <div class="stat-label">Products & Services</div>
+            <div class="demo-label">Demo value</div>
+        </div>
+
+        <div class="col-6 col-md stat-item">
+            <div class="stat-number">
+                <span>2.5K+</span>
+            </div>
+            <div class="stat-label">Requirements</div>
+            <div class="demo-label">Demo value</div>
+        </div>
+
+        <div class="col-6 col-md stat-item">
+            <div class="stat-number">
+                <span>12K+</span>
+            </div>
+            <div class="stat-label">Quotations</div>
+            <div class="demo-label">Demo value</div>
+        </div>
+
+        <div class="col-12 col-md stat-item">
+            <div class="stat-number">
+                <span>98%</span>
+            </div>
+            <div class="stat-label">Platform Reliability</div>
+            <div class="demo-label">Demo value</div>
+        </div>
+
+    </div>
+
+</div>
+</section> <!-- ========================================================= WHAT IS NEXUS ========================================================= --> <section class="section-padding nexus-overview" id="about">
+<div class="container">
+
+    <div class="row align-items-center g-5">
+
+        <div class="col-lg-6 reveal">
+
+            <div class="section-label">
+                The Nexus Platform
+            </div>
+
+            <h2 class="section-title">
+                Digital infrastructure for modern procurement.
+            </h2>
+
+            <p class="section-description">
+                Nexus Procurement is an open B2B marketplace designed to
+                digitize the complete procurement lifecycle. Businesses can
+                discover suppliers, publish requirements, receive competing
+                quotations, compare offers, select vendors, generate
+                purchase orders and track fulfillment through one
+                structured platform.
+            </p>
+
+            <p class="section-description mt-3">
+                Instead of procurement being scattered across calls,
+                messages and spreadsheets, Nexus creates a connected
+                business record from the first requirement to the final
+                vendor review.
+            </p>
+
+        </div>
+
+
+        <div class="col-lg-6 reveal">
+
+            <div class="overview-panel">
+
+                <div class="overview-content">
+
+                    <div class="overview-mini-label">
+                        Connected Procurement Infrastructure
+                    </div>
+
+                    <h3>
+                        One business workflow.
+                        Multiple connected roles.
+                    </h3>
+
+                    <p>
+                        Buyers, vendors and platform operations interact
+                        through structured procurement records.
+                    </p>
+
+                </div>
+
+                <div class="overview-flow">
+
+                    <div class="flow-mini-card">
+                        <i class="fa-solid fa-user-tie"></i>
+                        <span>Buyer creates requirement</span>
+                    </div>
+
+                    <div class="flow-mini-card">
+                        <i class="fa-solid fa-building"></i>
+                        <span>Vendor responds with quotation</span>
+                    </div>
+
+                    <div class="flow-mini-card">
+                        <i class="fa-solid fa-file-invoice"></i>
+                        <span>Quotation becomes purchase order</span>
+                    </div>
+
+                    <div class="flow-mini-card">
+                        <i class="fa-solid fa-truck-fast"></i>
+                        <span>Order moves through delivery</span>
+                    </div>
+
+                    <div class="flow-mini-card">
+                        <i class="fa-solid fa-chart-line"></i>
+                        <span>Performance history is updated</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+</section> <!-- ========================================================= BEFORE / AFTER ========================================================= --> <section class="section-padding comparison-section">
+<div class="container">
+
+    <div class="text-center reveal">
+
+        <div class="section-label justify-content-center">
+            Why Nexus
+        </div>
+
+        <h2 class="section-title mx-auto">
+            From fragmented procurement to structured business workflows.
+        </h2>
+
+        <p class="section-description mx-auto">
+            Nexus replaces disconnected procurement activities with
+            one transparent digital ecosystem.
+        </p>
+
+    </div>
+
+
+    <div class="row g-4 mt-4">
+
+        <div class="col-lg-6 reveal">
+
+            <div class="comparison-card before">
+
+                <div class="comparison-heading">
+
+                    <h3>Before Nexus</h3>
+
+                    <span class="comparison-badge">
+                        Fragmented
+                    </span>
+
+                </div>
+
+                <ul class="comparison-list">
+
+                    <li>
+                        <i class="fa-solid fa-phone"></i>
+                        Phone calls and manual supplier discovery
+                    </li>
+
+                    <li>
+                        <i class="fa-brands fa-whatsapp"></i>
+                        WhatsApp-based procurement conversations
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-table"></i>
+                        Spreadsheet-based tracking
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-file-lines"></i>
+                        Manual quotations
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-address-book"></i>
+                        Unstructured vendor records
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-clock"></i>
+                        Difficult order and delivery visibility
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-lg-6 reveal">
+
+            <div class="comparison-card after">
+
+                <div class="comparison-heading">
+
+                    <h3>With Nexus</h3>
+
+                    <span class="comparison-badge">
+                        Connected
+                    </span>
+
+                </div>
+
+                <ul class="comparison-list">
+
+                    <li>
+                        <i class="fa-solid fa-clipboard-list"></i>
+                        Digital procurement requirements
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-users"></i>
+                        Vendor discovery
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-scale-balanced"></i>
+                        Competitive quotation comparison
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-file-invoice-dollar"></i>
+                        Structured purchase orders
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-truck"></i>
+                        Delivery tracking
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-chart-simple"></i>
+                        Vendor performance history
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+</section> <!-- ========================================================= PROCUREMENT LIFECYCLE ========================================================= --> <section class="section-padding lifecycle-section" id="how-it-works">
+<div class="container">
+
+    <div class="reveal">
+
+        <div class="section-label">
+            Procurement Lifecycle
+        </div>
+
+        <h2 class="section-title">
+            From requirement to delivery.
+        </h2>
+
+        <p class="section-description">
+            The core Nexus workflow connects every important procurement
+            event into one traceable lifecycle.
+        </p>
+
+    </div>
+
+
+    <div class="lifecycle-track">
+
+        <div class="row g-3">
+
+            <div class="col-6 col-md-4 col-lg">
+
+                <div class="lifecycle-item reveal">
+
+                    <div class="lifecycle-number">01</div>
+
+                    <div class="lifecycle-icon">
+                        <i class="fa-solid fa-clipboard-list"></i>
+                    </div>
+
+                    <h4>Post Requirement</h4>
+
+                    <p>
+                        Buyer defines item, quantity,
+                        budget and deadline.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-6 col-md-4 col-lg">
+
+                <div class="lifecycle-item reveal">
+
+                    <div class="lifecycle-number">02</div>
+
+                    <div class="lifecycle-icon">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+
+                    <h4>Vendor Discovery</h4>
+
+                    <p>
+                        Relevant vendors discover
+                        buyer requirements.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-6 col-md-4 col-lg">
+
+                <div class="lifecycle-item reveal">
+
+                    <div class="lifecycle-number">03</div>
+
+                    <div class="lifecycle-icon">
+                        <i class="fa-solid fa-file-invoice"></i>
+                    </div>
+
+                    <h4>Receive Quotes</h4>
+
+                    <p>
+                        Vendors submit price,
+                        lead time and terms.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-6 col-md-4 col-lg">
+
+                <div class="lifecycle-item reveal">
+
+                    <div class="lifecycle-number">04</div>
+
+                    <div class="lifecycle-icon">
+                        <i class="fa-solid fa-scale-balanced"></i>
+                    </div>
+
+                    <h4>Compare</h4>
+
+                    <p>
+                        Buyer compares available
+                        vendor offers.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-6 col-md-4 col-lg">
+
+                <div class="lifecycle-item reveal">
+
+                    <div class="lifecycle-number">05</div>
+
+                    <div class="lifecycle-icon">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+
+                    <h4>Select</h4>
+
+                    <p>
+                        Buyer selects the preferred
+                        vendor.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-6 col-md-4 col-lg">
+
+                <div class="lifecycle-item reveal">
+
+                    <div class="lifecycle-number">06</div>
+
+                    <div class="lifecycle-icon">
+                        <i class="fa-solid fa-file-signature"></i>
+                    </div>
+
+                    <h4>Purchase Order</h4>
+
+                    <p>
+                        Selected quotation becomes
+                        a procurement order.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-6 col-md-4 col-lg">
+
+                <div class="lifecycle-item reveal">
+
+                    <div class="lifecycle-number">07</div>
+
+                    <div class="lifecycle-icon">
+                        <i class="fa-solid fa-box-open"></i>
+                    </div>
+
+                    <h4>Fulfillment</h4>
+
+                    <p>
+                        Vendor prepares and
+                        processes the order.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-6 col-md-4 col-lg">
+
+                <div class="lifecycle-item reveal">
+
+                    <div class="lifecycle-number">08</div>
+
+                    <div class="lifecycle-icon">
+                        <i class="fa-solid fa-truck-fast"></i>
+                    </div>
+
+                    <h4>Delivery</h4>
+
+                    <p>
+                        Buyer receives goods and
+                        confirms fulfillment.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-6 col-md-4 col-lg">
+
+                <div class="lifecycle-item reveal">
+
+                    <div class="lifecycle-number">09</div>
+
+                    <div class="lifecycle-icon">
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+
+                    <h4>Review</h4>
+
+                    <p>
+                        Buyer rates the vendor after
+                        completed transactions.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-6 col-md-4 col-lg">
+
+                <div class="lifecycle-item reveal">
+
+                    <div class="lifecycle-number">10</div>
+
+                    <div class="lifecycle-icon">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+
+                    <h4>Performance</h4>
+
+                    <p>
+                        Vendor history and reputation
+                        are updated.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+</section> <!-- ========================================================= BUYER SECTION ========================================================= --> <section class="section-padding buyer-section" id="buyers">
+<div class="container">
+
+    <div class="row align-items-center g-5">
+
+        <div class="col-lg-5 reveal">
+
+            <div class="section-label">
+                For Buyers
+            </div>
+
+            <h2 class="section-title">
+                Procurement built around better decisions.
+            </h2>
+
+            <p class="section-description">
+                Buyers can move from supplier discovery to completed
+                procurement using a structured workflow instead of
+                managing disconnected conversations.
+            </p>
+
+            <ul class="capability-list">
+
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    Search products and vendors
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    Browse procurement categories
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    Post purchase requirements
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    Receive and compare quotations
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    Evaluate vendor ratings
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    Generate purchase orders
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    Track deliveries and history
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <div class="col-lg-7 reveal">
+
+            <div class="procurement-mockup">
+
+                <div class="mockup-top">
+
+                    <div class="mockup-title">
+                        Procurement Requirement
+                    </div>
+
+                    <div class="mockup-status">
+                        OPEN RFQ
+                    </div>
+
+                </div>
+
+                <div class="requirement-main">
+
+                    <div class="requirement-label">
+                        Requirement
+                    </div>
+
+                    <div class="requirement-title">
+                        500 Industrial Sensors
+                    </div>
+
+                    <div class="row g-2">
+
+                        <div class="col-6 col-md-3">
+                            <div class="mockup-metric">
+                                <span>Budget</span>
+                                <strong>₹2.5L</strong>
+                            </div>
+                        </div>
+
+                        <div class="col-6 col-md-3">
+                            <div class="mockup-metric">
+                                <span>Quotes</span>
+                                <strong>12</strong>
+                            </div>
+                        </div>
+
+                        <div class="col-6 col-md-3">
+                            <div class="mockup-metric">
+                                <span>Best Offer</span>
+                                <strong>₹2.38L</strong>
+                            </div>
+                        </div>
+
+                        <div class="col-6 col-md-3">
+                            <div class="mockup-metric">
+                                <span>Delivery</span>
+                                <strong>7 Days</strong>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="best-offer">
+
+                        <div>
+                            <small>Preferred vendor rating</small>
+                            <strong>
+                                <i class="fa-solid fa-star"
+                                   style="color:#C18A18;font-size:10px;"></i>
+                                4.8 / 5
+                            </strong>
+                        </div>
+
+                        <div>
+                            <small>Quotation comparison</small>
+                            <strong style="color:var(--nexus-purple);">
+                                Ready
+                            </strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+</section> <!-- ========================================================= VENDOR SECTION ========================================================= --> <section class="section-padding vendor-section" id="vendors">
+<div class="container">
+
+    <div class="row align-items-center g-5">
+
+        <div class="col-lg-6 order-lg-2 reveal">
+
+            <div class="section-label">
+                For Vendors
+            </div>
+
+            <h2 class="section-title">
+                Turn your supply business into a digital storefront.
+            </h2>
+
+            <p class="section-description">
+                Nexus enables suppliers, manufacturers and distributors
+                to establish a verified digital presence, showcase
+                products, discover buyer requirements, submit competitive
+                quotations and build measurable business reputation.
+            </p>
+
+            <a href="/register/vendor"
+               class="primary-btn mt-4">
+                <i class="fa-solid fa-store"></i>
+                Register as Vendor
+            </a>
+
+        </div>
+
+
+        <div class="col-lg-6 order-lg-1 reveal">
+
+            <div class="vendor-dashboard">
+
+                <div class="vendor-profile-header">
+
+                    <div class="vendor-avatar">
+                        <i class="fa-solid fa-building"></i>
+                    </div>
+
+                    <div>
+                        <h4>TechCore Systems</h4>
+
+                        <div class="verified">
+                            <i class="fa-solid fa-circle-check"></i>
+                            Verified Demo Vendor
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="row g-0 mt-3">
+
+                    <div class="col-4 vendor-stat">
+                        <strong>4.8</strong>
+                        <span>Rating</span>
+                    </div>
+
+                    <div class="col-4 vendor-stat">
+                        <strong>126</strong>
+                        <span>Products</span>
+                    </div>
+
+                    <div class="col-4 vendor-stat">
+                        <strong>18</strong>
+                        <span>Active RFQs</span>
+                    </div>
+
+                </div>
+
+
+                <div class="row g-0">
+
+                    <div class="col-4 vendor-stat">
+                        <strong>42</strong>
+                        <span>Quotations</span>
+                    </div>
+
+                    <div class="col-4 vendor-stat">
+                        <strong>98</strong>
+                        <span>Orders</span>
+                    </div>
+
+                    <div class="col-4 vendor-stat">
+                        <strong>94%</strong>
+                        <span>Response Rate</span>
+                    </div>
+
+                </div>
+
+
+                <div class="performance-row">
+
+                    <div class="performance-head">
+                        <span>On-Time Delivery</span>
+                        <strong>96%</strong>
+                    </div>
+
+                    <div class="performance-bar">
+                        <div style="width:96%;"></div>
+                    </div>
+
+                </div>
+
+
+                <div class="performance-row">
+
+                    <div class="performance-head">
+                        <span>Response Performance</span>
+                        <strong>94%</strong>
+                    </div>
+
+                    <div class="performance-bar">
+                        <div style="width:94%;"></div>
+                    </div>
+
+                </div>
+
+
+                <div class="vendor-actions">
+
+                    <a href="/vendors"
+                       class="vendor-action">
+                        View Vendor
+                    </a>
+
+                    <a href="/products"
+                       class="vendor-action">
+                        View Products
+                    </a>
+
+                    <a href="/search"
+                       class="vendor-action">
+                        Respond to RFQ
+                    </a>
+
+                </div>
+
+                <div class="demo-label text-center mt-3">
+                    Fictional demonstration record
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+</section> <!-- ========================================================= VENDOR REPUTATION ========================================================= --> <section class="section-padding reputation-section">
+<div class="container">
+
+    <div class="row align-items-center g-5">
+
+        <div class="col-lg-5 reveal">
+
+            <div class="section-label">
+                Vendor Performance
+            </div>
+
+            <h2 class="section-title">
+                Reputation built on real performance.
+            </h2>
+
+            <p class="section-description">
+                Vendor reputation is not just a profile badge. It can
+                evolve from measurable procurement activity including
+                ratings, reviews, response behavior, deliveries and
+                completed orders.
+            </p>
+
+        </div>
+
+
+        <div class="col-lg-7 reveal">
+
+            <div class="reputation-card">
+
+                <div class="reputation-flow">
+
+                    <div class="rep-chip">
+                        <i class="fa-solid fa-star"></i>
+                        Buyer Ratings
+                    </div>
+
+                    <div class="rep-chip">
+                        <i class="fa-solid fa-comment"></i>
+                        Reviews
+                    </div>
+
+                    <div class="rep-chip">
+                        <i class="fa-solid fa-box-check"></i>
+                        Completed Orders
+                    </div>
+
+                    <div class="rep-chip">
+                        <i class="fa-solid fa-bolt"></i>
+                        Response Time
+                    </div>
+
+                    <div class="rep-chip">
+                        <i class="fa-solid fa-truck"></i>
+                        Delivery Accuracy
+                    </div>
+
+                    <div class="rep-chip">
+                        <i class="fa-solid fa-clock"></i>
+                        On-Time Delivery
+                    </div>
+
+                </div>
+
+
+                <div class="reputation-result">
+
+                    <small>
+                        Vendor Performance
+                    </small>
+
+                    <strong>
+                        Activity → Evidence → Reputation
+                    </strong>
+
+                    <div class="mt-2"
+                         style="color:#A69AAE;font-size:9px;line-height:1.6;">
+                        Ratings + delivery data + response data +
+                        fulfillment history can contribute to a
+                        structured vendor performance model.
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+</section> <!-- ========================================================= MARKETPLACE DISCOVERY ========================================================= --> <section class="section-padding marketplace-section">
+<div class="container">
+
+    <div class="text-center reveal">
+
+        <div class="section-label justify-content-center">
+            Marketplace
+        </div>
+
+        <h2 class="section-title mx-auto">
+            Find products. Discover suppliers.
+        </h2>
+
+        <p class="section-description mx-auto">
+            Search across business categories and discover suppliers
+            based on what your organization needs.
+        </p>
+
+    </div>
+
+
+    <form class="market-search-box reveal"
+          action="/search"
+          method="get">
+
+        <i class="fa-solid fa-magnifying-glass"
+           style="color:var(--nexus-purple);margin:12px 4px;"></i>
+
+        <input type="text"
+               name="q"
+               placeholder="Search products, suppliers or categories..."
+               aria-label="Marketplace search">
+
+        <button type="submit">
+            Search
+        </button>
+
+    </form>
+
+
+    <div class="filter-row reveal">
+
+        <div class="filter-chip">
+            <i class="fa-solid fa-layer-group"></i>
+            Category
+        </div>
+
+        <div class="filter-chip">
+            <i class="fa-solid fa-location-dot"></i>
+            Location
+        </div>
+
+        <div class="filter-chip">
+            <i class="fa-solid fa-indian-rupee-sign"></i>
+            Price Range
+        </div>
+
+        <div class="filter-chip">
+            <i class="fa-solid fa-star"></i>
+            Vendor Rating
+        </div>
+
+        <div class="filter-chip">
+            <i class="fa-solid fa-box"></i>
+            Availability
+        </div>
+
+    </div>
+
+
+    <div class="row g-3">
+
+        <div class="col-6 col-md-4 col-lg-3 reveal">
+
+            <a href="/search?category=electronics"
+               class="category-card d-block">
+
+                <div class="category-icon">
+                    <i class="fa-solid fa-microchip"></i>
+                </div>
+
+                <h4>Electronics</h4>
+
+                <p>
+                    Components, sensors and electronic supplies.
+                </p>
+
+            </a>
+
+        </div>
+
+
+        <div class="col-6 col-md-4 col-lg-3 reveal">
+
+            <a href="/search?category=raw-materials"
+               class="category-card d-block">
+
+                <div class="category-icon">
+                    <i class="fa-solid fa-cubes"></i>
+                </div>
+
+                <h4>Raw Materials</h4>
+
+                <p>
+                    Industrial and manufacturing materials.
+                </p>
+
+            </a>
+
+        </div>
+
+
+        <div class="col-6 col-md-4 col-lg-3 reveal">
+
+            <a href="/search?category=industrial-equipment"
+               class="category-card d-block">
+
+                <div class="category-icon">
+                    <i class="fa-solid fa-gears"></i>
+                </div>
+
+                <h4>Industrial Equipment</h4>
+
+                <p>
+                    Machinery and production equipment.
+                </p>
+
+            </a>
+
+        </div>
+
+
+        <div class="col-6 col-md-4 col-lg-3 reveal">
+
+            <a href="/search?category=office-supplies"
+               class="category-card d-block">
+
+                <div class="category-icon">
+                    <i class="fa-solid fa-briefcase"></i>
+                </div>
+
+                <h4>Office Supplies</h4>
+
+                <p>
+                    Business and workplace essentials.
+                </p>
+
+            </a>
+
+        </div>
+
+
+        <div class="col-6 col-md-4 col-lg-3 reveal">
+
+            <a href="/search?category=packaging"
+               class="category-card d-block">
+
+                <div class="category-icon">
+                    <i class="fa-solid fa-box"></i>
+                </div>
+
+                <h4>Packaging</h4>
+
+                <p>
+                    Packaging materials and solutions.
+                </p>
+
+            </a>
+
+        </div>
+
+
+        <div class="col-6 col-md-4 col-lg-3 reveal">
+
+            <a href="/search?category=construction"
+               class="category-card d-block">
+
+                <div class="category-icon">
+                    <i class="fa-solid fa-helmet-safety"></i>
+                </div>
+
+                <h4>Construction Materials</h4>
+
+                <p>
+                    Materials for construction and infrastructure.
+                </p>
+
+            </a>
+
+        </div>
+
+
+        <div class="col-6 col-md-4 col-lg-3 reveal">
+
+            <a href="/search?category=it-hardware"
+               class="category-card d-block">
+
+                <div class="category-icon">
+                    <i class="fa-solid fa-server"></i>
+                </div>
+
+                <h4>IT Hardware</h4>
+
+                <p>
+                    Hardware, networking and computing equipment.
+                </p>
+
+            </a>
+
+        </div>
+
+
+        <div class="col-6 col-md-4 col-lg-3 reveal">
+
+            <a href="/search?category=logistics"
+               class="category-card d-block">
+
+                <div class="category-icon">
+                    <i class="fa-solid fa-truck"></i>
+                </div>
+
+                <h4>Logistics</h4>
+
+                <p>
+                    Transport and business logistics services.
+                </p>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+</section> <!-- ========================================================= VERIFIED VENDORS ========================================================= --> <section class="section-padding vendor-directory">
+<div class="container">
+
+    <div class="text-center reveal">
+
+        <div class="section-label justify-content-center">
+            Vendor Network
+        </div>
+
+        <h2 class="section-title mx-auto">
+            Verified suppliers. Built for business.
+        </h2>
+
+        <p class="section-description mx-auto">
+            A future marketplace directory where buyers can discover
+            suppliers and evaluate business information.
+        </p>
+
+    </div>
+
+
+    <div class="row g-3 mt-4">
+
+        <div class="col-md-6 col-lg-3 reveal">
+
+            <a href="/vendors"
+               class="directory-card d-block">
+
+                <div class="directory-header">
+
+                    <div class="directory-avatar">
+                        <i class="fa-solid fa-microchip"></i>
+                    </div>
+
+                    <div>
+                        <h4>TechCore Systems</h4>
+                        <span>Electronics · Nagpur</span>
+                    </div>
+
+                    <div class="verified-pill">
+                        VERIFIED
+                    </div>
+
+                </div>
+
+                <div class="directory-details">
+
+                    <div>
+                        <strong class="rating">
+                            <i class="fa-solid fa-star"></i> 4.8
+                        </strong>
+                        Rating
+                    </div>
+
+                    <div>
+                        <strong>126</strong>
+                        Products
+                    </div>
+
+                </div>
+
+            </a>
+
+        </div>
+
+
+        <div class="col-md-6 col-lg-3 reveal">
+
+            <a href="/vendors"
+               class="directory-card d-block">
+
+                <div class="directory-header">
+
+                    <div class="directory-avatar">
+                        <i class="fa-solid fa-gears"></i>
+                    </div>
+
+                    <div>
+                        <h4>Prime Industrial Supply</h4>
+                        <span>Industrial · Pune</span>
+                    </div>
+
+                    <div class="verified-pill">
+                        VERIFIED
+                    </div>
+
+                </div>
+
+                <div class="directory-details">
+
+                    <div>
+                        <strong class="rating">
+                            <i class="fa-solid fa-star"></i> 4.7
+                        </strong>
+                        Rating
+                    </div>
+
+                    <div>
+                        <strong>84</strong>
+                        Products
+                    </div>
+
+                </div>
+
+            </a>
+
+        </div>
+
+
+        <div class="col-md-6 col-lg-3 reveal">
+
+            <a href="/vendors"
+               class="directory-card d-block">
+
+                <div class="directory-header">
+
+                    <div class="directory-avatar">
+                        <i class="fa-solid fa-box"></i>
+                    </div>
+
+                    <div>
+                        <h4>Vertex Packaging</h4>
+                        <span>Packaging · Mumbai</span>
+                    </div>
+
+                    <div class="verified-pill">
+                        VERIFIED
+                    </div>
+
+                </div>
+
+                <div class="directory-details">
+
+                    <div>
+                        <strong class="rating">
+                            <i class="fa-solid fa-star"></i> 4.9
+                        </strong>
+                        Rating
+                    </div>
+
+                    <div>
+                        <strong>210</strong>
+                        Products
+                    </div>
+
+                </div>
+
+            </a>
+
+        </div>
+
+
+        <div class="col-md-6 col-lg-3 reveal">
+
+            <a href="/vendors"
+               class="directory-card d-block">
+
+                <div class="directory-header">
+
+                    <div class="directory-avatar">
+                        <i class="fa-solid fa-industry"></i>
+                    </div>
+
+                    <div>
+                        <h4>Nova Equipment Co.</h4>
+                        <span>Machinery · Bengaluru</span>
+                    </div>
+
+                    <div class="verified-pill">
+                        VERIFIED
+                    </div>
+
+                </div>
+
+                <div class="directory-details">
+
+                    <div>
+                        <strong class="rating">
+                            <i class="fa-solid fa-star"></i> 4.6
+                        </strong>
+                        Rating
+                    </div>
+
+                    <div>
+                        <strong>73</strong>
+                        Products
+                    </div>
+
+                </div>
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="text-center demo-label mt-4">
+        Fictional vendor records shown for interface demonstration only
+    </div>
+
+</div>
+</section> <!-- ========================================================= BUSINESS ARCHITECTURE ========================================================= --> <section class="architecture-section">
+<div class="container">
+
+    <div class="text-center reveal">
+
+        <div class="section-label justify-content-center">
+            Business Architecture
+        </div>
+
+        <h2 class="section-title mx-auto">
+            How the Nexus ecosystem connects.
+        </h2>
+
+        <p class="section-description mx-auto">
+            The interface represents the underlying business relationships
+            that will later be implemented through Spring Boot, JPA and Oracle.
+        </p>
+
+    </div>
+
+
+    <div class="architecture-wrapper reveal">
+
+        <div class="architecture-step">
+
+            <div class="architecture-node highlight">
+                <strong>USER</strong>
+                <span>Authentication</span>
+            </div>
+
+            <div class="architecture-arrow">
+                <i class="fa-solid fa-arrow-right"></i>
+            </div>
+
+            <div class="architecture-node">
+                <strong>BUYER / VENDOR</strong>
+                <span>Marketplace</span>
+            </div>
+
+            <div class="architecture-arrow">
+                <i class="fa-solid fa-arrow-right"></i>
+            </div>
+
+            <div class="architecture-node">
+                <strong>PRODUCTS / REQUIREMENTS</strong>
+                <span>Procurement</span>
+            </div>
+
+        </div>
+
+
+        <div class="text-center my-4"
+             style="color:#B9A8D2;">
+            <i class="fa-solid fa-arrow-down"></i>
+        </div>
+
+
+        <div class="architecture-step">
+
+            <div class="architecture-node">
+                <strong>QUOTATIONS</strong>
+                <span>Competition</span>
+            </div>
+
+            <div class="architecture-arrow">
+                <i class="fa-solid fa-arrow-right"></i>
+            </div>
+
+            <div class="architecture-node highlight">
+                <strong>PURCHASE ORDER</strong>
+                <span>Transaction</span>
+            </div>
+
+            <div class="architecture-arrow">
+                <i class="fa-solid fa-arrow-right"></i>
+            </div>
+
+            <div class="architecture-node">
+                <strong>ORDER ITEMS</strong>
+                <span>Transaction Detail</span>
+            </div>
+
+        </div>
+
+
+        <div class="text-center my-4"
+             style="color:#B9A8D2;">
+            <i class="fa-solid fa-arrow-down"></i>
+        </div>
+
+
+        <div class="architecture-step">
+
+            <div class="architecture-node">
+                <strong>DELIVERY</strong>
+                <span>Fulfillment</span>
+            </div>
+
+            <div class="architecture-arrow">
+                <i class="fa-solid fa-arrow-right"></i>
+            </div>
+
+            <div class="architecture-node">
+                <strong>RATING & REVIEW</strong>
+                <span>Reputation</span>
+            </div>
+
+            <div class="architecture-arrow">
+                <i class="fa-solid fa-arrow-right"></i>
+            </div>
+
+            <div class="architecture-node highlight">
+                <strong>VENDOR PERFORMANCE</strong>
+                <span>Business History</span>
+            </div>
+
+        </div>
+
+
+        <div class="architecture-caption">
+            <span>Authentication</span>
+            →
+            <span>Marketplace</span>
+            →
+            <span>Procurement</span>
+            →
+            <span>Transaction</span>
+            →
+            <span>Fulfillment</span>
+            →
+            <span>Reputation</span>
+        </div>
+
+    </div>
+
+</div>
+</section> <!-- ========================================================= WHY NEXUS ========================================================= --> <section class="section-padding why-section">
+<div class="container">
+
+    <div class="text-center reveal">
+
+        <div class="section-label justify-content-center">
+            Platform Principles
+        </div>
+
+        <h2 class="section-title mx-auto">
+            Built for transparent procurement.
+        </h2>
+
+    </div>
+
+
+    <div class="row g-3 mt-4">
+
+        <div class="col-md-6 col-lg-4 reveal">
+
+            <div class="why-card">
+
+                <div class="why-icon">
+                    <i class="fa-solid fa-shield-check"></i>
+                </div>
+
+                <h4>Verified Vendors</h4>
+
+                <p>
+                    Vendor verification creates a stronger foundation
+                    for business sourcing and supplier discovery.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-md-6 col-lg-4 reveal">
+
+            <div class="why-card">
+
+                <div class="why-icon">
+                    <i class="fa-solid fa-scale-balanced"></i>
+                </div>
+
+                <h4>Competitive Quotations</h4>
+
+                <p>
+                    Multiple vendor responses allow buyers to compare
+                    commercial offers in a structured way.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-md-6 col-lg-4 reveal">
+
+            <div class="why-card">
+
+                <div class="why-icon">
+                    <i class="fa-solid fa-diagram-project"></i>
+                </div>
+
+                <h4>Structured Procurement</h4>
+
+                <p>
+                    Requirements, quotations and orders follow a defined
+                    digital business workflow.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-md-6 col-lg-4 reveal">
+
+            <div class="why-card">
+
+                <div class="why-icon">
+                    <i class="fa-solid fa-truck-fast"></i>
+                </div>
+
+                <h4>Order Visibility</h4>
+
+                <p>
+                    Procurement progress can remain visible from purchase
+                    order creation through fulfillment and delivery.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-md-6 col-lg-4 reveal">
+
+            <div class="why-card">
+
+                <div class="why-icon">
+                    <i class="fa-solid fa-chart-line"></i>
+                </div>
+
+                <h4>Vendor Performance</h4>
+
+                <p>
+                    Supplier reputation can be supported by measurable
+                    procurement activity and transaction history.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-md-6 col-lg-4 reveal">
+
+            <div class="why-card">
+
+                <div class="why-icon">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                </div>
+
+                <h4>Auditable Records</h4>
+
+                <p>
+                    Important procurement actions can be represented as
+                    structured records for operational traceability.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+</section> <!-- ========================================================= SECURITY ========================================================= --> <section class="section-padding security-section">
+<div class="container">
+
+    <div class="text-center reveal">
+
+        <div class="section-label justify-content-center">
+            Platform Security
+        </div>
+
+        <h2 class="section-title mx-auto">
+            Security and accountability by design.
+        </h2>
+
+        <p class="section-description mx-auto">
+            These are system design and implementation goals for the
+            future Spring Security backend.
+        </p>
+
+    </div>
+
+
+    <div class="security-panel reveal">
+
+        <div class="row">
+
+            <div class="col-md-4">
+
+                <div class="security-item">
+                    <i class="fa-solid fa-user-lock"></i>
+                    <div>
+                        <strong>Role-Based Access</strong>
+                        <span>Buyer, Vendor, Admin and Manager roles</span>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="security-item">
+                    <i class="fa-solid fa-lock"></i>
+                    <div>
+                        <strong>Secure Authentication</strong>
+                        <span>Controlled authentication workflow</span>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="security-item">
+                    <i class="fa-solid fa-key"></i>
+                    <div>
+                        <strong>Password Hashing</strong>
+                        <span>Secure credential storage goal</span>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="security-item">
+                    <i class="fa-solid fa-list-check"></i>
+                    <div>
+                        <strong>Audit Logging</strong>
+                        <span>Important actions can be recorded</span>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="security-item">
+                    <i class="fa-solid fa-route"></i>
+                    <div>
+                        <strong>Transaction Traceability</strong>
+                        <span>Procurement events remain connected</span>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="security-item">
+                    <i class="fa-solid fa-database"></i>
+                    <div>
+                        <strong>Data Integrity</strong>
+                        <span>Structured database relationships</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="security-note mt-3">
+            <strong>Implementation note:</strong>
+            Security features shown here represent the intended
+            architecture. They are not presented as already implemented
+            or certified capabilities.
+        </div>
+
+    </div>
+
+</div>
+</section> <!-- ========================================================= ADMIN + MANAGER ========================================================= --> <section class="section-padding operations-section">
+<div class="container">
+
+    <div class="row align-items-end mb-5">
+
+        <div class="col-lg-7 reveal">
+
+            <div class="section-label">
+                Platform Operations
+            </div>
+
+            <h2 class="section-title">
+                Controlled by intelligent platform operations.
+            </h2>
+
+        </div>
+
+        <div class="col-lg-5 reveal">
+
+            <p class="section-description">
+                Nexus is not only a marketplace. Internal operational
+                roles help govern activity and maintain a structured
+                procurement ecosystem.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="row g-4">
+
+        <div class="col-md-6 reveal">
+
+            <div class="role-card">
+
+                <div class="role-top">
+
+                    <div class="role-icon">
+                        <i class="fa-solid fa-user-shield"></i>
+                    </div>
+
+                    <div>
+                        <h4>Admin</h4>
+                        <span>Marketplace Governance</span>
+                    </div>
+
+                </div>
+
+                <ul class="role-list">
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        User Management
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Vendor Verification
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Category Management
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Analytics & Reports
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Audit Logs
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-md-6 reveal">
+
+            <div class="role-card">
+
+                <div class="role-top">
+
+                    <div class="role-icon">
+                        <i class="fa-solid fa-user-tie"></i>
+                    </div>
+
+                    <div>
+                        <h4>Manager</h4>
+                        <span>Operational Oversight</span>
+                    </div>
+
+                </div>
+
+                <ul class="role-list">
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Procurement Monitoring
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Escalation Handling
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Stuck Order Monitoring
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Operational Oversight
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Platform Support
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+</section> <!-- ========================================================= FINAL PROJECT OUTPUT ========================================================= --> <section class="section-padding output-section">
+<div class="container">
+
+    <div class="text-center reveal">
+
+        <div class="section-label justify-content-center">
+            Project Output
+        </div>
+
+        <h2 class="section-title mx-auto">
+            From fragmented procurement to a connected supply network.
+        </h2>
+
+        <p class="section-description mx-auto">
+            Nexus brings four perspectives together around one
+            procurement ecosystem.
+        </p>
+
+    </div>
+
+
+    <div class="row g-3 mt-4">
+
+        <div class="col-md-6 col-lg-3 reveal">
+
+            <div class="output-card">
+
+                <h4>
+                    <i class="fa-solid fa-user-tie"></i>
+                    Buyers
+                </h4>
+
+                <ul>
+                    <li>Discover suppliers</li>
+                    <li>Compare quotations</li>
+                    <li>Manage procurement</li>
+                    <li>Track deliveries</li>
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-md-6 col-lg-3 reveal">
+
+            <div class="output-card">
+
+                <h4>
+                    <i class="fa-solid fa-building"></i>
+                    Vendors
+                </h4>
+
+                <ul>
+                    <li>Build digital presence</li>
+                    <li>List products</li>
+                    <li>Respond to requirements</li>
+                    <li>Build reputation</li>
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-md-6 col-lg-3 reveal">
+
+            <div class="output-card">
+
+                <h4>
+                    <i class="fa-solid fa-user-shield"></i>
+                    Admin
+                </h4>
+
+                <ul>
+                    <li>Govern marketplace</li>
+                    <li>Verify vendors</li>
+                    <li>Monitor activity</li>
+                    <li>Analyze performance</li>
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-md-6 col-lg-3 reveal">
+
+            <div class="output-card system">
+
+                <h4>
+                    <i class="fa-solid fa-network-wired"></i>
+                    System
+                </h4>
+
+                <ul>
+                    <li>Requirements</li>
+                    <li>Quotations</li>
+                    <li>Orders & Deliveries</li>
+                    <li>Reviews & Audit Records</li>
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+</section> <!-- ========================================================= FINAL CTA ========================================================= --> <section class="final-cta">
+<div class="container final-cta-content">
+
+    <div class="section-label">
+        Start the procurement journey
+    </div>
+
+    <h2>
+        Move procurement forward.
+    </h2>
+
+    <p>
+        Discover suppliers, compete for opportunities and manage
+        procurement through one connected digital network.
+    </p>
+
+    <div class="cta-buttons">
+
+        <a href="/search"
+           class="primary-btn">
+            <i class="fa-solid fa-compass"></i>
+            Explore Marketplace
+        </a>
+
+        <a href="/register/vendor"
+           class="secondary-btn">
+            <i class="fa-solid fa-store"></i>
+            Become a Vendor
+        </a>
+
+        <a href="/register/buyer"
+           class="secondary-btn">
+            <i class="fa-solid fa-arrow-right"></i>
+            Get Started
+        </a>
+
+    </div>
+
+</div>
+</section> </main> <!-- ========================================================= FOOTER ========================================================= --> <footer id="contact">
+<div class="container">
+
+    <div class="row g-4">
+
+        <div class="col-lg-4">
+
+            <div class="footer-brand">
+
+                <div class="brand-mark">
+                    <i class="fa-solid fa-network-wired"></i>
+                </div>
+
+                NEXUS PROCUREMENT
+
+            </div>
+
+            <p class="footer-description">
+                Open B2B Procurement & Vendor Marketplace Platform.
+                A structured digital ecosystem connecting buyers,
+                vendors and procurement workflows.
+            </p>
+
+            <div class="footer-socials">
+
+                <a href="#"
+                   class="social-link"
+                   aria-label="LinkedIn">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+
+                <a href="#"
+                   class="social-link"
+                   aria-label="GitHub">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+
+                <a href="mailto:contact@nexusprocurement.local"
+                   class="social-link"
+                   aria-label="Email">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-6 col-md-3 col-lg-2 footer-column">
+
+            <h5>PLATFORM</h5>
+
+            <a href="#solutions">Explore</a>
+            <a href="/products">Products</a>
+            <a href="/vendors">Vendors</a>
+            <a href="#how-it-works">How It Works</a>
+
+        </div>
+
+
+        <div class="col-6 col-md-3 col-lg-2 footer-column">
+
+            <h5>FOR BUSINESS</h5>
+
+            <a href="#buyers">For Buyers</a>
+            <a href="#vendors">For Vendors</a>
+
+        </div>
+
+
+        <div class="col-6 col-md-3 col-lg-2 footer-column">
+
+            <h5>COMPANY</h5>
+
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+            <a href="#">Careers</a>
+
+        </div>
+
+
+        <div class="col-6 col-md-3 col-lg-2 footer-column">
+
+            <h5>RESOURCES</h5>
+
+            <a href="#">Support</a>
+            <a href="#">Documentation</a>
+            <a href="#">FAQs</a>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <div>
+            © 2026 Nexus Procurement. All rights reserved.
+        </div>
+
+        <div class="footer-bottom-links">
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+        </div>
+
+    </div>
+
+</div>
+</footer> <!-- ========================================================= JAVASCRIPT ========================================================= --> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> <script> /* ========================================================= NAVBAR SCROLL EFFECT ========================================================= */ const navbar = document.getElementById("mainNavbar"); window.addEventListener("scroll", function () { if (window.scrollY > 30) { navbar.classList.add("scrolled"); } else { navbar.classList.remove("scrolled"); } }); /* ========================================================= SCROLL REVEAL ========================================================= */ const revealElements = document.querySelectorAll(".reveal"); const revealObserver = new IntersectionObserver( function (entries, observer) { entries.forEach(function (entry) { if (entry.isIntersecting) { entry.target.classList.add("visible"); observer.unobserve(entry.target); } }); }, { threshold: 0.10 } ); revealElements.forEach(function (element) { revealObserver.observe(element); }); /* ========================================================= CLOSE MOBILE NAVBAR AFTER CLICK ========================================================= */ document.querySelectorAll(".navbar-nav .nav-link").forEach(function (link) { link.addEventListener("click", function () { const navigation = document.getElementById("nexusNavigation"); if (navigation.classList.contains("show")) { const collapse = bootstrap.Collapse.getInstance(navigation); if (collapse) { collapse.hide(); } } }); }); /* ========================================================= DEMO SEARCH FEEDBACK ========================================================= */ document.querySelectorAll('form[action="/search"]').forEach(function (form) { form.addEventListener("submit", function (event) { const input = form.querySelector('input[name="q"]'); if (input && input.value.trim() === "") { event.preventDefault(); input.focus(); } }); }); /* ========================================================= NETWORK NODE PULSE ========================================================= */ const nodes = document.querySelectorAll(".network-node"); nodes.forEach(function (node, index) { node.addEventListener("mouseenter", function () { node.style.borderColor = "rgba(196,181,253,0.75)"; node.style.boxShadow = "0 0 30px rgba(139,92,246,0.25)"; }); node.addEventListener("mouseleave", function () { node.style.borderColor = "rgba(167,139,250,0.25)"; node.style.boxShadow = "0 12px 35px rgba(0,0,0,0.22)"; }); }); </script> </body> </html>
