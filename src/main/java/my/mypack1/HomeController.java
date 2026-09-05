@@ -10,4 +10,9 @@ public class HomeController {
 	public String home() {
 		return "index";
 	}
+
+	@GetMapping("/register/vendor")
+	public String becomeVendor() {
+		return "become-vendor";
+	}
 }

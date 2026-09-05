@@ -1,0 +1,3826 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<meta charset="UTF-8">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Become a Vendor | Nexus Procurement</title>
+
+
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+
+		:root {
+
+			--purple: #7438e8;
+			--purple-dark: #5b21b6;
+			--purple-light: #9b6cff;
+			--purple-soft: #f3edff;
+
+			--dark: #0c0818;
+			--dark-2: #151024;
+
+			--text: #171321;
+			--muted: #756e80;
+
+			--border: #e3ddec;
+
+			--background: #f7f5fa;
+
+			--white: #ffffff;
+
+		}
+
+
+		body {
+
+			font-family:
+				"Segoe UI",
+				Inter,
+				Arial,
+				sans-serif;
+
+			background: var(--background);
+
+			color: var(--text);
+
+		}
+
+
+		/* =====================================================
+           NAVBAR
+        ===================================================== */
+
+		.navbar {
+
+			height: 76px;
+
+			background: rgba(255, 255, 255, .97);
+
+			border-bottom:
+				1px solid #ece8f2;
+
+			display: flex;
+
+			align-items: center;
+
+			justify-content: space-between;
+
+			padding: 0 7%;
+
+			position: sticky;
+
+			top: 0;
+
+			z-index: 100;
+
+		}
+
+
+		.brand {
+
+			display: flex;
+
+			align-items: center;
+
+			gap: 12px;
+
+		}
+
+
+		.brand-logo {
+
+			width: 42px;
+
+			height: 42px;
+
+			border-radius: 12px;
+
+			background:
+				linear-gradient(135deg,
+					#6d28d9,
+					#965cff);
+
+			color: white;
+
+			display: flex;
+
+			align-items: center;
+
+			justify-content: center;
+
+			font-weight: 900;
+
+			font-size: 20px;
+
+			box-shadow:
+				0 8px 25px rgba(116, 56, 232, .25);
+
+		}
+
+
+		.brand-name {
+
+			font-size: 18px;
+
+			font-weight: 850;
+
+			letter-spacing: -.3px;
+
+		}
+
+
+		.brand-subtitle {
+
+			font-size: 9px;
+
+			letter-spacing: 2px;
+
+			color: #8a8492;
+
+			margin-top: 3px;
+
+		}
+
+
+		.back {
+
+			text-decoration: none;
+
+			color: #50495b;
+
+			font-size: 14px;
+
+			font-weight: 650;
+
+		}
+
+
+		.back:hover {
+
+			color: var(--purple);
+
+		}
+
+
+
+		/* =====================================================
+           HERO
+        ===================================================== */
+
+		.hero {
+
+			background:
+
+				radial-gradient(circle at 85% 25%,
+					rgba(124, 58, 237, .30),
+					transparent 30%),
+
+				radial-gradient(circle at 10% 90%,
+					rgba(139, 92, 246, .15),
+					transparent 28%),
+
+				var(--dark);
+
+			color: white;
+
+			padding:
+				58px 7% 72px;
+
+			position: relative;
+
+			overflow: hidden;
+
+		}
+
+
+		.hero::before {
+
+			content: "";
+
+			position: absolute;
+
+			width: 650px;
+
+			height: 650px;
+
+			border:
+				1px solid rgba(167, 139, 250, .12);
+
+			border-radius: 50%;
+
+			right: -260px;
+
+			top: -310px;
+
+		}
+
+
+		.hero::after {
+
+			content: "";
+
+			position: absolute;
+
+			width: 400px;
+
+			height: 400px;
+
+			border:
+				1px solid rgba(167, 139, 250, .09);
+
+			border-radius: 50%;
+
+			right: -100px;
+
+			top: -180px;
+
+		}
+
+
+		.hero-content {
+
+			max-width: 1050px;
+
+			margin: auto;
+
+			position: relative;
+
+			z-index: 2;
+
+		}
+
+
+		.eyebrow {
+
+			display: inline-flex;
+
+			align-items: center;
+
+			gap: 8px;
+
+			padding:
+				8px 14px;
+
+			border:
+				1px solid rgba(167, 139, 250, .35);
+
+			border-radius: 30px;
+
+			background:
+				rgba(124, 58, 237, .12);
+
+			color: #bca5ff;
+
+			font-size: 11px;
+
+			font-weight: 850;
+
+			letter-spacing: 1.5px;
+
+		}
+
+
+		.dot {
+
+			width: 7px;
+
+			height: 7px;
+
+			border-radius: 50%;
+
+			background: #a78bfa;
+
+			box-shadow:
+				0 0 12px #a78bfa;
+
+		}
+
+
+		.hero h1 {
+
+			font-size:
+				clamp(40px, 5vw, 62px);
+
+			line-height: 1.04;
+
+			letter-spacing: -2.7px;
+
+			margin-top: 22px;
+
+		}
+
+
+		.hero h1 span {
+
+			color: #a78bfa;
+
+		}
+
+
+		.hero p {
+
+			max-width: 740px;
+
+			margin-top: 18px;
+
+			color: #bdb7ca;
+
+			font-size: 16px;
+
+			line-height: 1.7;
+
+		}
+
+
+
+		/* =====================================================
+           MAIN
+        ===================================================== */
+
+		.container {
+
+			width: 86%;
+
+			max-width: 1180px;
+
+			margin:
+				-35px auto 70px;
+
+			position: relative;
+
+			z-index: 5;
+
+		}
+
+
+
+		/* =====================================================
+           PROGRESS
+        ===================================================== */
+
+		.progress-card {
+
+			background: white;
+
+			border:
+				1px solid var(--border);
+
+			border-radius: 18px;
+
+			padding: 20px 24px;
+
+			box-shadow:
+				0 15px 45px rgba(30, 15, 50, .08);
+
+			margin-bottom: 22px;
+
+		}
+
+
+		.progress {
+
+			display: flex;
+
+			justify-content: space-between;
+
+		}
+
+
+		.progress-step {
+
+			flex: 1;
+
+			text-align: center;
+
+			color: #aaa4b1;
+
+			font-size: 11px;
+
+			font-weight: 750;
+
+		}
+
+
+		.progress-number {
+
+			width: 35px;
+
+			height: 35px;
+
+			border-radius: 50%;
+
+			background: #f0edf4;
+
+			display: flex;
+
+			align-items: center;
+
+			justify-content: center;
+
+			margin:
+				auto auto 7px;
+
+			font-weight: 850;
+
+		}
+
+
+		.progress-step.active {
+
+			color: var(--purple);
+
+		}
+
+
+		.progress-step.active .progress-number {
+
+			background:
+				var(--purple);
+
+			color: white;
+
+			box-shadow:
+				0 0 0 5px #eee7ff;
+
+		}
+
+
+
+		/* =====================================================
+           FORM CARD
+        ===================================================== */
+
+		.form-card {
+
+			background: white;
+
+			border:
+				1px solid var(--border);
+
+			border-radius: 22px;
+
+			overflow: hidden;
+
+			box-shadow:
+				0 20px 55px rgba(30, 15, 50, .08);
+
+		}
+
+
+		.form-header {
+
+			padding:
+				30px 38px;
+
+			border-bottom:
+				1px solid #eeeaf3;
+
+		}
+
+
+		.form-header h2 {
+
+			font-size: 24px;
+
+			letter-spacing: -.5px;
+
+		}
+
+
+		.form-header p {
+
+			margin-top: 7px;
+
+			color: var(--muted);
+
+			font-size: 14px;
+
+		}
+
+
+		.form-body {
+
+			padding:
+				35px 38px;
+
+		}
+
+
+		.section {
+
+			margin-bottom: 43px;
+
+		}
+
+
+		.section-title {
+
+			display: flex;
+
+			gap: 12px;
+
+			align-items: center;
+
+			margin-bottom: 22px;
+
+		}
+
+
+		.section-number {
+
+			width: 39px;
+
+			height: 39px;
+
+			border-radius: 11px;
+
+			background:
+				var(--purple-soft);
+
+			color:
+				var(--purple);
+
+			display: flex;
+
+			align-items: center;
+
+			justify-content: center;
+
+			font-weight: 850;
+
+		}
+
+
+		.section-title h3 {
+
+			font-size: 17px;
+
+		}
+
+
+		.section-title p {
+
+			font-size: 12px;
+
+			color: #8b8494;
+
+			margin-top: 3px;
+
+		}
+
+
+
+		/* =====================================================
+           FORM FIELDS
+        ===================================================== */
+
+		.grid {
+
+			display: grid;
+
+			grid-template-columns:
+				repeat(2, 1fr);
+
+			gap: 19px;
+
+		}
+
+
+		.full {
+
+			grid-column:
+				1 / -1;
+
+		}
+
+
+		.field {
+
+			display: flex;
+
+			flex-direction: column;
+
+			gap: 8px;
+
+		}
+
+
+		label {
+
+			font-size: 12px;
+
+			font-weight: 750;
+
+			color: #40394a;
+
+		}
+
+
+		.required {
+
+			color: var(--purple);
+
+		}
+
+
+		input,
+		select,
+		textarea {
+
+			width: 100%;
+
+			border:
+				1px solid #ddd6e6;
+
+			background:
+				#fcfbfe;
+
+			border-radius: 10px;
+
+			padding:
+				13px 14px;
+
+			outline: none;
+
+			color: #292330;
+
+			font-family: inherit;
+
+			font-size: 14px;
+
+			transition: .2s;
+
+		}
+
+
+		input:focus,
+		select:focus,
+		textarea:focus {
+
+			border-color:
+				var(--purple);
+
+			background: white;
+
+			box-shadow:
+				0 0 0 4px rgba(116, 56, 232, .08);
+
+		}
+
+
+		textarea {
+
+			min-height: 105px;
+
+			resize: vertical;
+
+		}
+
+
+
+		/* =====================================================
+           BUSINESS TYPE
+        ===================================================== */
+
+		.business-types {
+
+			display: grid;
+
+			grid-template-columns:
+				repeat(3, 1fr);
+
+			gap: 13px;
+
+		}
+
+
+		.type-option {
+
+			position: relative;
+
+		}
+
+
+		.type-option input {
+
+			position: absolute;
+
+			opacity: 0;
+
+		}
+
+
+		.type-option label {
+
+			min-height: 105px;
+
+			border:
+				1px solid var(--border);
+
+			border-radius: 14px;
+
+			padding: 18px;
+
+			display: block;
+
+			cursor: pointer;
+
+			background: white;
+
+			transition: .2s;
+
+		}
+
+
+		.type-option label:hover {
+
+			border-color:
+				#bca5e9;
+
+			transform:
+				translateY(-2px);
+
+		}
+
+
+		.type-option input:checked+label {
+
+			border-color:
+				var(--purple);
+
+			background:
+				#faf7ff;
+
+			box-shadow:
+				0 0 0 2px rgba(116, 56, 232, .08);
+
+		}
+
+
+		.type-icon {
+
+			font-size: 22px;
+
+			margin-bottom: 11px;
+
+		}
+
+
+		.type-name {
+
+			font-size: 14px;
+
+			font-weight: 800;
+
+		}
+
+
+		.type-description {
+
+			font-size: 11px;
+
+			color: #8b8494;
+
+			margin-top: 4px;
+
+		}
+
+
+
+		/* =====================================================
+           SINGLE INDUSTRY
+        ===================================================== */
+
+		.industry-note {
+
+			padding: 12px 14px;
+
+			border-radius: 10px;
+
+			background:
+				#faf7ff;
+
+			border:
+				1px solid #e5daf7;
+
+			color: #756a84;
+
+			font-size: 12px;
+
+			margin-bottom: 17px;
+
+		}
+
+
+		.industry-grid {
+
+			display: grid;
+
+			grid-template-columns:
+				repeat(4, 1fr);
+
+			gap: 11px;
+
+		}
+
+
+		.industry-option {
+
+			position: relative;
+
+		}
+
+
+		.industry-option input {
+
+			position: absolute;
+
+			opacity: 0;
+
+		}
+
+
+		.industry-option label {
+
+			min-height: 85px;
+
+			padding: 15px;
+
+			border:
+				1px solid var(--border);
+
+			border-radius: 12px;
+
+			cursor: pointer;
+
+			display: block;
+
+			transition: .2s;
+
+		}
+
+
+		.industry-option label:hover {
+
+			border-color:
+				#bca4e8;
+
+			transform:
+				translateY(-1px);
+
+		}
+
+
+		.industry-option input:checked+label {
+
+			border-color:
+				var(--purple);
+
+			background:
+				#f7f2ff;
+
+			box-shadow:
+				0 0 0 2px rgba(116, 56, 232, .06);
+
+		}
+
+
+		.industry-name {
+
+			font-size: 13px;
+
+			font-weight: 800;
+
+		}
+
+
+		.industry-description {
+
+			display: block;
+
+			font-size: 10px;
+
+			color: #928b9d;
+
+			margin-top: 5px;
+
+			line-height: 1.4;
+
+		}
+
+
+
+		/* =====================================================
+           DYNAMIC INDUSTRY PROFILE
+        ===================================================== */
+
+		.dynamic-box {
+
+			display: none;
+
+			margin-top: 22px;
+
+			padding: 25px;
+
+			border:
+				1px solid #dfd4f0;
+
+			border-radius: 16px;
+
+			background:
+				linear-gradient(135deg,
+					#fbf9ff,
+					#f7f2ff);
+
+		}
+
+
+		.dynamic-box.show {
+
+			display: block;
+
+			animation:
+				fadeIn .25s ease;
+
+		}
+
+
+		@keyframes fadeIn {
+
+			from {
+				opacity: 0;
+				transform: translateY(5px);
+			}
+
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+
+		}
+
+
+		.dynamic-title {
+
+			font-size: 16px;
+
+			font-weight: 850;
+
+			color: #332743;
+
+			margin-bottom: 5px;
+
+		}
+
+
+		.dynamic-description {
+
+			color: #7d7488;
+
+			font-size: 12px;
+
+			margin-bottom: 20px;
+
+		}
+
+
+		.check-grid {
+
+			display: grid;
+
+			grid-template-columns:
+				repeat(3, 1fr);
+
+			gap: 9px;
+
+		}
+
+
+		.check-item {
+
+			background: white;
+
+			border:
+				1px solid #e2dbea;
+
+			border-radius: 9px;
+
+			padding: 11px;
+
+			font-size: 12px;
+
+			cursor: pointer;
+
+		}
+
+
+		.check-item:hover {
+
+			border-color:
+				var(--purple);
+
+		}
+
+
+		.check-item input {
+
+			width: auto;
+
+			margin-right: 7px;
+
+		}
+
+
+
+		/* =====================================================
+           SERVICE LOCATIONS
+        ===================================================== */
+
+		.location-intro {
+
+			padding:
+				13px 15px;
+
+			background:
+				#faf7ff;
+
+			border:
+				1px solid #e3d8f3;
+
+			border-radius: 11px;
+
+			color: #71677e;
+
+			font-size: 12px;
+
+			line-height: 1.6;
+
+			margin-bottom: 17px;
+
+		}
+
+
+		.location-actions {
+
+			display: flex;
+
+			justify-content: flex-end;
+
+			gap: 8px;
+
+			margin-bottom: 12px;
+
+		}
+
+
+		.location-action {
+
+			border: none;
+
+			background: transparent;
+
+			color: var(--purple);
+
+			font-size: 11px;
+
+			font-weight: 750;
+
+			cursor: pointer;
+
+		}
+
+
+		.states {
+
+			display: grid;
+
+			grid-template-columns:
+				repeat(4, 1fr);
+
+			gap: 9px;
+
+		}
+
+
+		.state {
+
+			position: relative;
+
+		}
+
+
+		.state input {
+
+			position: absolute;
+
+			opacity: 0;
+
+		}
+
+
+		.state label {
+
+			display: flex;
+
+			align-items: center;
+
+			gap: 8px;
+
+			padding: 12px;
+
+			min-height: 45px;
+
+			border:
+				1px solid var(--border);
+
+			border-radius: 9px;
+
+			cursor: pointer;
+
+			background: white;
+
+			font-size: 12px;
+
+			transition: .2s;
+
+		}
+
+
+		.state label::before {
+
+			content: "";
+
+			width: 15px;
+
+			height: 15px;
+
+			border:
+				1px solid #cfc6db;
+
+			border-radius: 4px;
+
+			flex-shrink: 0;
+
+		}
+
+
+		.state input:checked+label {
+
+			border-color:
+				var(--purple);
+
+			background:
+				#f7f2ff;
+
+			color:
+				var(--purple);
+
+		}
+
+
+		.state input:checked+label::before {
+
+			background:
+				var(--purple);
+
+			border-color:
+				var(--purple);
+
+			box-shadow:
+				inset 0 0 0 3px white;
+
+		}
+
+
+		.pan-india {
+
+			margin-top: 13px;
+
+			border:
+				1px dashed #bca4e8;
+
+			border-radius: 11px;
+
+			padding: 13px;
+
+			background:
+				#fbf9ff;
+
+		}
+
+
+		.pan-india label {
+
+			display: flex;
+
+			align-items: center;
+
+			gap: 9px;
+
+			cursor: pointer;
+
+			font-size: 12px;
+
+		}
+
+
+		.pan-india input {
+
+			width: auto;
+
+		}
+
+
+
+		/* =====================================================
+           VERIFICATION
+        ===================================================== */
+
+		.verification {
+
+			display: flex;
+
+			gap: 13px;
+
+			padding: 18px;
+
+			border:
+				1px solid #dfd4f0;
+
+			background:
+				#faf7ff;
+
+			border-radius: 14px;
+
+		}
+
+
+		.verification-icon {
+
+			width: 39px;
+
+			height: 39px;
+
+			flex-shrink: 0;
+
+			border-radius: 10px;
+
+			background:
+				#e9ddff;
+
+			color:
+				var(--purple);
+
+			display: flex;
+
+			align-items: center;
+
+			justify-content: center;
+
+			font-weight: 900;
+
+		}
+
+
+		.verification strong {
+
+			font-size: 13px;
+
+		}
+
+
+		.verification p {
+
+			color: #756d81;
+
+			font-size: 11px;
+
+			line-height: 1.6;
+
+			margin-top: 4px;
+
+		}
+
+
+
+		/* =====================================================
+           FOOTER
+        ===================================================== */
+
+		.footer {
+
+			background:
+				#faf9fc;
+
+			border-top:
+				1px solid #eeeaf3;
+
+			padding:
+				22px 38px;
+
+			display: flex;
+
+			align-items: center;
+
+			justify-content: space-between;
+
+			gap: 20px;
+
+		}
+
+
+		.footer-note {
+
+			color: #8b8492;
+
+			font-size: 11px;
+
+		}
+
+
+		.submit {
+
+			border: none;
+
+			background:
+				linear-gradient(135deg,
+					#6d28d9,
+					#8b5cf6);
+
+			color: white;
+
+			padding:
+				14px 25px;
+
+			border-radius: 10px;
+
+			font-weight: 800;
+
+			cursor: pointer;
+
+			box-shadow:
+				0 10px 25px rgba(109, 40, 217, .25);
+
+			transition: .2s;
+
+		}
+
+
+		.submit:hover {
+
+			transform:
+				translateY(-2px);
+
+			box-shadow:
+				0 14px 30px rgba(109, 40, 217, .32);
+
+		}
+
+
+		.success {
+
+			display: none;
+
+			padding:
+				18px 38px;
+
+			background:
+				#f1fff7;
+
+			color:
+				#17663c;
+
+			border-top:
+				1px solid #d3f3df;
+
+			font-size: 13px;
+
+			font-weight: 700;
+
+		}
+
+
+
+		/* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+		@media(max-width:950px) {
+
+			.business-types {
+
+				grid-template-columns:
+					repeat(2, 1fr);
+
+			}
+
+			.industry-grid {
+
+				grid-template-columns:
+					repeat(2, 1fr);
+
+			}
+
+			.states {
+
+				grid-template-columns:
+					repeat(3, 1fr);
+
+			}
+
+			.check-grid {
+
+				grid-template-columns:
+					repeat(2, 1fr);
+
+			}
+
+		}
+
+
+		@media(max-width:650px) {
+
+			.navbar {
+
+				padding: 0 4%;
+
+			}
+
+			.brand-subtitle {
+
+				display: none;
+
+			}
+
+			.container {
+
+				width: 94%;
+
+			}
+
+			.grid {
+
+				grid-template-columns:
+					1fr;
+
+			}
+
+			.full {
+
+				grid-column: auto;
+
+			}
+
+			.business-types,
+			.industry-grid,
+			.states,
+			.check-grid {
+
+				grid-template-columns:
+					1fr;
+
+			}
+
+			.form-body {
+
+				padding:
+					25px 20px;
+
+			}
+
+			.form-header {
+
+				padding:
+					25px 20px;
+
+			}
+
+			.footer {
+
+				flex-direction: column;
+
+				align-items: stretch;
+
+				padding: 20px;
+
+			}
+
+			.submit {
+
+				width: 100%;
+
+			}
+
+		}
+	</style>
+
+</head>
+
+
+
+<body>
+
+
+
+	<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+	<header class="navbar">
+
+
+		<div class="brand">
+
+			<div class="brand-logo">
+				N
+			</div>
+
+
+			<div>
+
+				<div class="brand-name">
+					NEXUS PROCUREMENT
+				</div>
+
+				<div class="brand-subtitle">
+					OPEN B2B PROCUREMENT NETWORK
+				</div>
+
+			</div>
+
+		</div>
+
+
+		<a href="/" class="back">
+			← Back to Nexus
+		</a>
+
+
+	</header>
+
+
+
+	<!-- =====================================================
+     HERO
+===================================================== -->
+
+	<section class="hero">
+
+
+		<div class="hero-content">
+
+
+			<div class="eyebrow">
+
+				<span class="dot"></span>
+
+				SUPPLIER ONBOARDING
+
+			</div>
+
+
+			<h1>
+
+				Build your place in the
+				<span>Nexus network.</span>
+
+			</h1>
+
+
+			<p>
+
+				Register your business, define your supply industry,
+				tell buyers where you operate, and create a trusted
+				supplier profile for the Nexus procurement network.
+
+			</p>
+
+
+		</div>
+
+
+	</section>
+
+
+
+	<!-- =====================================================
+     MAIN
+===================================================== -->
+
+	<main class="container">
+
+
+
+		<!-- PROGRESS -->
+
+		<div class="progress-card">
+
+			<div class="progress">
+
+
+				<div class="progress-step active">
+
+					<div class="progress-number">
+						01
+					</div>
+
+					Business
+
+				</div>
+
+
+				<div class="progress-step">
+
+					<div class="progress-number">
+						02
+					</div>
+
+					Industry
+
+				</div>
+
+
+				<div class="progress-step">
+
+					<div class="progress-number">
+						03
+					</div>
+
+					Capabilities
+
+				</div>
+
+
+				<div class="progress-step">
+
+					<div class="progress-number">
+						04
+					</div>
+
+					Location
+
+				</div>
+
+
+				<div class="progress-step">
+
+					<div class="progress-number">
+						05
+					</div>
+
+					Review
+
+				</div>
+
+
+			</div>
+
+		</div>
+
+
+
+		<!-- =====================================================
+     FORM CARD
+===================================================== -->
+
+		<div class="form-card">
+
+
+			<div class="form-header">
+
+				<h2>
+					Vendor Registration
+				</h2>
+
+				<p>
+					Create your supplier identity on Nexus Procurement.
+				</p>
+
+			</div>
+
+
+
+			<form id="vendorForm">
+
+
+				<div class="form-body">
+
+
+
+					<!-- =====================================================
+     SECTION 01 — BUSINESS
+===================================================== -->
+
+					<section class="section">
+
+
+						<div class="section-title">
+
+							<div class="section-number">
+								01
+							</div>
+
+							<div>
+
+								<h3>
+									Business Profile
+								</h3>
+
+								<p>
+									Basic information about your organization.
+								</p>
+
+							</div>
+
+						</div>
+
+
+
+						<div class="grid">
+
+
+							<div class="field">
+
+								<label>
+									Company / Vendor Name
+									<span class="required">*</span>
+								</label>
+
+								<input type="text" id="vendorName" name="vendorName"
+									placeholder="e.g. Tech Solutions Pvt Ltd" required>
+
+							</div>
+
+
+
+							<div class="field">
+
+								<label>
+									Year Established
+								</label>
+
+								<input type="number" name="establishedYear" placeholder="e.g. 2018" min="1900"
+									max="2026">
+
+							</div>
+
+
+
+							<div class="field">
+
+								<label>
+									GST / Business Registration Number
+								</label>
+
+								<input type="text" name="gst" placeholder="Enter GST / registration number">
+
+							</div>
+
+
+
+							<div class="field">
+
+								<label>
+									Business Scale
+								</label>
+
+								<select name="businessScale">
+
+									<option value="">
+										Select business scale
+									</option>
+
+									<option>
+										Small Business
+									</option>
+
+									<option>
+										Medium Business
+									</option>
+
+									<option>
+										Large Enterprise
+									</option>
+
+									<option>
+										Enterprise / Corporate
+									</option>
+
+								</select>
+
+							</div>
+
+
+
+							<div class="field full">
+
+								<label>
+									About Your Business
+								</label>
+
+								<textarea name="description"
+									placeholder="Describe your business, experience, capabilities and the markets you serve..."></textarea>
+
+							</div>
+
+
+						</div>
+
+					</section>
+
+
+
+					<!-- =====================================================
+     SECTION 02 — BUSINESS TYPE
+===================================================== -->
+
+					<section class="section">
+
+
+						<div class="section-title">
+
+							<div class="section-number">
+								02
+							</div>
+
+							<div>
+
+								<h3>
+									How does your business operate?
+								</h3>
+
+								<p>
+									Select one supplier type.
+								</p>
+
+							</div>
+
+						</div>
+
+
+
+						<div class="business-types">
+
+
+							<div class="type-option">
+
+								<input type="radio" name="businessType" value="Manufacturer" id="manufacturer" required>
+
+								<label for="manufacturer">
+
+									<div class="type-icon">
+										🏭
+									</div>
+
+									<div class="type-name">
+										Manufacturer
+									</div>
+
+									<div class="type-description">
+										Manufacture or produce goods
+									</div>
+
+								</label>
+
+							</div>
+
+
+
+							<div class="type-option">
+
+								<input type="radio" name="businessType" value="Wholesaler" id="wholesaler">
+
+								<label for="wholesaler">
+
+									<div class="type-icon">
+										📦
+									</div>
+
+									<div class="type-name">
+										Wholesaler
+									</div>
+
+									<div class="type-description">
+										Supply goods in bulk
+									</div>
+
+								</label>
+
+							</div>
+
+
+
+							<div class="type-option">
+
+								<input type="radio" name="businessType" value="Distributor" id="distributor">
+
+								<label for="distributor">
+
+									<div class="type-icon">
+										🚚
+									</div>
+
+									<div class="type-name">
+										Distributor
+									</div>
+
+									<div class="type-description">
+										Distribute brands or products
+									</div>
+
+								</label>
+
+							</div>
+
+
+
+							<div class="type-option">
+
+								<input type="radio" name="businessType" value="Importer" id="importer">
+
+								<label for="importer">
+
+									<div class="type-icon">
+										🌐
+									</div>
+
+									<div class="type-name">
+										Importer
+									</div>
+
+									<div class="type-description">
+										Import and supply products
+									</div>
+
+								</label>
+
+							</div>
+
+
+
+							<div class="type-option">
+
+								<input type="radio" name="businessType" value="Retailer" id="retailer">
+
+								<label for="retailer">
+
+									<div class="type-icon">
+										🛒
+									</div>
+
+									<div class="type-name">
+										Retailer
+									</div>
+
+									<div class="type-description">
+										Retail and business supply
+									</div>
+
+								</label>
+
+							</div>
+
+
+
+							<div class="type-option">
+
+								<input type="radio" name="businessType" value="Service Provider" id="serviceProvider">
+
+								<label for="serviceProvider">
+
+									<div class="type-icon">
+										🛠
+									</div>
+
+									<div class="type-name">
+										Service Provider
+									</div>
+
+									<div class="type-description">
+										Provide B2B professional services
+									</div>
+
+								</label>
+
+							</div>
+
+
+						</div>
+
+					</section>
+
+
+
+					<!-- =====================================================
+     SECTION 03 — INDUSTRY
+===================================================== -->
+
+					<section class="section">
+
+
+						<div class="section-title">
+
+							<div class="section-number">
+								03
+							</div>
+
+							<div>
+
+								<h3>
+									Primary Supply Industry
+								</h3>
+
+								<p>
+									Select the main industry your business supplies.
+								</p>
+
+							</div>
+
+						</div>
+
+
+
+						<div class="industry-note">
+
+							<strong>One primary industry only.</strong>
+							This helps Nexus match your supplier profile with the right
+							procurement requirements. Your products and services can be
+							managed separately later.
+
+						</div>
+
+
+
+						<div class="industry-grid">
+
+
+
+							<div class="industry-option">
+
+								<input type="radio" name="category" value="Automotive" id="automotive" required>
+
+								<label for="automotive">
+
+									<span class="industry-name">
+										Automotive
+									</span>
+
+									<span class="industry-description">
+										Vehicles, tyres & components
+									</span>
+
+								</label>
+
+							</div>
+
+
+
+							<div class="industry-option">
+
+								<input type="radio" name="category" value="Electronics" id="electronics">
+
+								<label for="electronics">
+
+									<span class="industry-name">
+										Electronics
+									</span>
+
+									<span class="industry-description">
+										Components & electronic systems
+									</span>
+
+								</label>
+
+							</div>
+
+
+
+							<div class="industry-option">
+
+								<input type="radio" name="category" value="Electrical" id="electrical">
+
+								<label for="electrical">
+
+									<span class="industry-name">
+										Electrical
+									</span>
+
+									<span class="industry-description">
+										Equipment, power & systems
+									</span>
+
+								</label>
+
+							</div>
+
+
+
+							<div class="industry-option">
+
+								<input type="radio" name="category" value="Industrial Equipment" id="industrial">
+
+								<label for="industrial">
+
+									<span class="industry-name">
+										Industrial
+									</span>
+
+									<span class="industry-description">
+										Machinery, tools & equipment
+									</span>
+
+								</label>
+
+							</div>
+
+
+
+							<div class="industry-option">
+
+								<input type="radio" name="category" value="Construction" id="construction">
+
+								<label for="construction">
+
+									<span class="industry-name">
+										Construction
+									</span>
+
+									<span class="industry-description">
+										Building & infrastructure
+									</span>
+
+								</label>
+
+							</div>
+
+
+
+							<div class="industry-option">
+
+								<input type="radio" name="category" value="Home Appliances" id="appliances">
+
+								<label for="appliances">
+
+									<span class="industry-name">
+										Home Appliances
+									</span>
+
+									<span class="industry-description">
+										Consumer appliances
+									</span>
+
+								</label>
+
+							</div>
+
+
+
+							<div class="industry-option">
+
+								<input type="radio" name="category" value="Food & Agriculture" id="food">
+
+								<label for="food">
+
+									<span class="industry-name">
+										Food & agricultural supply
+									</span>
+
+									<span class="industry-description">
+										Food, farm & essentials
+									</span>
+
+								</label>
+
+							</div>
+
+
+
+							<div class="industry-option">
+
+								<input type="radio" name="category" value="Healthcare" id="healthcare">
+
+								<label for="healthcare">
+
+									<span class="industry-name">
+										Healthcare
+									</span>
+
+									<span class="industry-description">
+										Medical & healthcare supply
+									</span>
+
+								</label>
+
+							</div>
+
+
+
+							<div class="industry-option">
+
+								<input type="radio" name="category" value="Textiles & Apparel" id="textiles">
+
+								<label for="textiles">
+
+									<span class="industry-name">
+										Textiles & Apparel
+									</span>
+
+									<span class="industry-description">
+										Fabrics, garments & footwear
+									</span>
+
+								</label>
+
+							</div>
+
+
+
+							<div class="industry-option">
+
+								<input type="radio" name="category" value="Chemicals & Materials" id="chemicals">
+
+								<label for="chemicals">
+
+									<span class="industry-name">
+										Chemicals & Materials
+									</span>
+
+									<span class="industry-description">
+										Industrial materials & chemicals
+									</span>
+
+								</label>
+
+							</div>
+
+
+
+							<div class="industry-option">
+
+								<input type="radio" name="category" value="Furniture" id="furniture">
+
+								<label for="furniture">
+
+									<span class="industry-name">
+										Furniture
+									</span>
+
+									<span class="industry-description">
+										Office & commercial furniture
+									</span>
+
+								</label>
+
+							</div>
+
+
+
+							<div class="industry-option">
+
+								<input type="radio" name="category" value="Office Supplies" id="office">
+
+								<label for="office">
+
+									<span class="industry-name">
+										Office Supplies
+									</span>
+
+									<span class="industry-description">
+										Workplace procurement
+									</span>
+
+								</label>
+
+							</div>
+
+
+						</div>
+
+
+
+						<!-- =====================================================
+     AUTOMOTIVE
+===================================================== -->
+
+						<div id="automotiveProfile" class="dynamic-box">
+
+							<div class="dynamic-title">
+								Automotive Supplier Profile
+							</div>
+
+							<div class="dynamic-description">
+								Help buyers understand your automotive specialization.
+							</div>
+
+
+
+							<div class="grid">
+
+
+								<div class="field">
+
+									<label>
+										Automotive Segment
+									</label>
+
+									<select id="automotiveSegment">
+
+										<option value="">
+											Select segment
+										</option>
+
+										<option>
+											Passenger Vehicles
+										</option>
+
+										<option>
+											Commercial Vehicles
+										</option>
+
+										<option>
+											Two-Wheelers
+										</option>
+
+										<option>
+											Truck & Bus
+										</option>
+
+										<option>
+											Agricultural Vehicles
+										</option>
+
+										<option>
+											Industrial / OTR
+										</option>
+
+										<option>
+											Automotive Components
+										</option>
+
+									</select>
+
+								</div>
+
+
+
+								<div class="field">
+
+									<label>
+										Years of Industry Experience
+									</label>
+
+									<input type="number" placeholder="e.g. 12" min="0">
+
+								</div>
+
+
+
+								<div class="field full">
+
+									<label>
+										Automotive Specialization
+									</label>
+
+									<textarea
+										placeholder="Example: tyre manufacturing, braking systems, engine components, electrical components..."></textarea>
+
+								</div>
+
+
+							</div>
+
+
+
+							<br>
+
+
+							<strong style="font-size:13px;">
+								Relevant Capabilities
+							</strong>
+
+
+							<div class="check-grid" style="margin-top:12px;">
+
+
+								<label class="check-item">
+									<input type="checkbox">
+									OEM Supply
+								</label>
+
+
+								<label class="check-item">
+									<input type="checkbox">
+									Aftermarket
+								</label>
+
+
+								<label class="check-item">
+									<input type="checkbox">
+									Customization
+								</label>
+
+
+								<label class="check-item">
+									<input type="checkbox">
+									Quality Testing
+								</label>
+
+
+								<label class="check-item">
+									<input type="checkbox">
+									Private Label
+								</label>
+
+
+								<label class="check-item">
+									<input type="checkbox">
+									Export Supply
+								</label>
+
+
+							</div>
+
+						</div>
+
+
+
+						<!-- =====================================================
+     ELECTRONICS
+===================================================== -->
+
+						<div id="electronicsProfile" class="dynamic-box">
+
+							<div class="dynamic-title">
+								Electronics Supplier Profile
+							</div>
+
+							<div class="dynamic-description">
+								Define your electronics supply and technical capabilities.
+							</div>
+
+
+							<div class="grid">
+
+
+								<div class="field">
+
+									<label>
+										Electronics Segment
+									</label>
+
+									<select>
+
+										<option>
+											Select segment
+										</option>
+
+										<option>
+											Electronic Components
+										</option>
+
+										<option>
+											PCB / PCBA
+										</option>
+
+										<option>
+											Sensors
+										</option>
+
+										<option>
+											Embedded Systems
+										</option>
+
+										<option>
+											Consumer Electronics
+										</option>
+
+										<option>
+											Industrial Electronics
+										</option>
+
+										<option>
+											Power Electronics
+										</option>
+
+										<option>
+											Communication Equipment
+										</option>
+
+									</select>
+
+								</div>
+
+
+								<div class="field">
+
+									<label>
+										Technical Experience
+									</label>
+
+									<input type="number" min="0" placeholder="Years">
+
+								</div>
+
+
+								<div class="field full">
+
+									<label>
+										Technical Capabilities
+									</label>
+
+									<textarea
+										placeholder="Describe assembly, testing, design, customization or manufacturing capabilities..."></textarea>
+
+								</div>
+
+
+							</div>
+
+
+							<br>
+
+
+							<strong style="font-size:13px;">
+								Capabilities
+							</strong>
+
+
+							<div class="check-grid" style="margin-top:12px;">
+
+
+								<label class="check-item">
+									<input type="checkbox">
+									SMT Assembly
+								</label>
+
+
+								<label class="check-item">
+									<input type="checkbox">
+									PCB Assembly
+								</label>
+
+
+								<label class="check-item">
+									<input type="checkbox">
+									Testing
+								</label>
+
+
+								<label class="check-item">
+									<input type="checkbox">
+									OEM
+								</label>
+
+
+								<label class="check-item">
+									<input type="checkbox">
+									ODM
+								</label>
+
+
+								<label class="check-item">
+									<input type="checkbox">
+									Custom Design
+								</label>
+
+
+							</div>
+
+						</div>
+
+
+
+						<!-- =====================================================
+     GENERIC INDUSTRY PROFILE
+===================================================== -->
+
+						<div id="genericProfile" class="dynamic-box">
+
+							<div class="dynamic-title">
+								Industry Capability Profile
+							</div>
+
+							<div class="dynamic-description">
+								Tell buyers about your specialization and operating capability.
+							</div>
+
+
+							<div class="grid">
+
+
+								<div class="field">
+
+									<label>
+										Primary Specialization
+									</label>
+
+									<input id="specialization" type="text" placeholder="e.g. Industrial pumps">
+
+								</div>
+
+
+								<div class="field">
+
+									<label>
+										Years of Industry Experience
+									</label>
+
+									<input type="number" min="0" placeholder="e.g. 10">
+
+								</div>
+
+
+								<div class="field">
+
+									<label>
+										Operating / Manufacturing Location
+									</label>
+
+									<input type="text" placeholder="e.g. Nagpur, Maharashtra">
+
+								</div>
+
+
+								<div class="field">
+
+									<label>
+										Typical Lead Time
+									</label>
+
+									<select>
+
+										<option>
+											Select lead time
+										</option>
+
+										<option>
+											1–3 days
+										</option>
+
+										<option>
+											3–7 days
+										</option>
+
+										<option>
+											1–2 weeks
+										</option>
+
+										<option>
+											2–4 weeks
+										</option>
+
+										<option>
+											Custom
+										</option>
+
+									</select>
+
+								</div>
+
+
+								<div class="field full">
+
+									<label>
+										Capabilities & Supply Details
+									</label>
+
+									<textarea
+										placeholder="Describe your products, services, capacity, customization and business capabilities..."></textarea>
+
+								</div>
+
+
+							</div>
+
+						</div>
+
+
+
+					</section>
+
+
+
+					<!-- =====================================================
+     SECTION 04 — BUSINESS CAPABILITY
+===================================================== -->
+
+					<section class="section">
+
+
+						<div class="section-title">
+
+							<div class="section-number">
+								04
+							</div>
+
+							<div>
+
+								<h3>
+									Business & Supply Capability
+								</h3>
+
+								<p>
+									Give buyers a practical understanding of your supply capacity.
+								</p>
+
+							</div>
+
+						</div>
+
+
+
+						<div class="grid">
+
+
+							<div class="field">
+
+								<label>
+									Warehouse / Operating Capacity
+								</label>
+
+								<input type="text" name="capacity" placeholder="e.g. 10,000 sq.ft. warehouse">
+
+							</div>
+
+
+							<div class="field">
+
+								<label>
+									Typical Order Lead Time
+								</label>
+
+								<select name="leadTime">
+
+									<option value="">
+										Select lead time
+									</option>
+
+									<option>
+										1–3 days
+									</option>
+
+									<option>
+										3–7 days
+									</option>
+
+									<option>
+										1–2 weeks
+									</option>
+
+									<option>
+										2–4 weeks
+									</option>
+
+									<option>
+										Custom
+									</option>
+
+								</select>
+
+							</div>
+
+
+							<div class="field">
+
+								<label>
+									Minimum Order / Engagement
+								</label>
+
+								<input type="text" name="minimumOrder" placeholder="e.g. 10 units / project based">
+
+							</div>
+
+
+							<div class="field">
+
+								<label>
+									Customization Available
+								</label>
+
+								<select name="customization">
+
+									<option>
+										Select
+									</option>
+
+									<option>
+										Yes
+									</option>
+
+									<option>
+										No
+									</option>
+
+									<option>
+										On Request
+									</option>
+
+								</select>
+
+							</div>
+
+
+						</div>
+
+					</section>
+
+
+
+					<!-- =====================================================
+     SECTION 05 — SERVICE LOCATIONS
+===================================================== -->
+
+					<section class="section">
+
+
+						<div class="section-title">
+
+							<div class="section-number">
+								05
+							</div>
+
+							<div>
+
+								<h3>
+									Where do you supply?
+								</h3>
+
+								<p>
+									Select the states where you can currently fulfil buyer requirements.
+								</p>
+
+							</div>
+
+						</div>
+
+
+
+						<div class="location-intro">
+
+							<strong>Service area matters.</strong>
+
+							A vendor will only be shown to buyers searching within
+							the regions they serve. For example, if you select
+							Maharashtra, Madhya Pradesh and Uttar Pradesh, buyers
+							searching Rajasthan will not see your supplier profile
+							for that requirement.
+
+						</div>
+
+
+
+						<div class="location-actions">
+
+							<button type="button" class="location-action" onclick="selectAllStates()">
+								Select All
+							</button>
+
+
+							<button type="button" class="location-action" onclick="clearStates()">
+								Clear
+							</button>
+
+						</div>
+
+
+
+						<div class="states">
+
+
+							<div class="state">
+								<input type="checkbox" name="states" value="Andhra Pradesh" id="state1">
+								<label for="state1">
+									Andhra Pradesh
+								</label>
+							</div>
+
+
+							<div class="state">
+								<input type="checkbox" name="states" value="Arunachal Pradesh" id="state2">
+								<label for="state2">
+									Arunachal Pradesh
+								</label>
+							</div>
+
+
+							<div class="state">
+								<input type="checkbox" name="states" value="Assam" id="state3">
+								<label for="state3">
+									Assam
+								</label>
+							</div>
+
+
+							<div class="state">
+								<input type="checkbox" name="states" value="Bihar" id="state4">
+								<label for="state4">
+									Bihar
+								</label>
+							</div>
+
+
+							<div class="state">
+								<input type="checkbox" name="states" value="Chhattisgarh" id="state5">
+								<label for="state5">
+									Chhattisgarh
+								</label>
+							</div>
+
+
+							<div class="state">
+								<input type="checkbox" name="states" value="Delhi" id="state6">
+								<label for="state6">
+									Delhi
+								</label>
+							</div>
+
+
+							<div class="state">
+								<input type="checkbox" name="states" value="Goa" id="state7">
+								<label for="state7">
+									Goa
+								</label>
+							</div>
+
+
+							<div class="state">
+								<input type="checkbox" name="states" value="Gujarat" id="state8">
+								<label for="state8">
+									Gujarat
+								</label>
+							</div>
+
+
+							<div class="state">
+								<input type="checkbox" name="states" value="Haryana" id="state9">
+								<label for="state9">
+									Haryana
+								</label>
+							</div>
+
+
+							<div class="state">
+								<input type="checkbox" name="states" value="Himachal Pradesh" id="state10">
+								<label for="state10">
+									Himachal Pradesh
+								</label>
+							</div>
+
+
+							<div class="state">
+								<input type="checkbox" name="states" value="Jharkhand" id="state11">
+								<label for="state11">
+									Jharkhand
+								</label>
+							</div>
+
+
+							<div class="state">
+								<input type="checkbox" name="states" value="Karnataka" id="state12">
+								<label for="state12">
+									Karnataka
+								</label>
+							</div>
+
+
+							<div class="state">
+								<input type="checkbox" name="states" value="Kerala" id="state13">
+								<label for="state13">
+									Kerala
+								</label>
+							</div>
+
+
+							<div class="state">
+								<input type="checkbox" name="states" value="Madhya Pradesh" id="state14">
+								<label for="state14">
+									Madhya Pradesh
+								</label>
+							</div>
+
+
+							<div class="state">
+								<input type="checkbox" name="states" value="Maharashtra" id="state15">
+								<label for="state15">
+									Maharashtra
+								</label>
+							</div>
+
+
+							<div class="state">
+								<input type="checkbox" name="states" value="Manipur" id="state16">
+								<label for="state16">
+									Manipur
+								</label>
+							</div>
+
+
+							<div class="state">
+								<input type="checkbox" name="states" value="Meghalaya" id="state17">
+								<label for="state17">
+									Meghalaya
+								</label>
+							</div>
+
+
+							<div class="state">
+								<input type="checkbox" name="states" value="Mizoram" id="state18">
+								<label for="state18">
+									Mizoram
+								</label>
+							</div>
+
+
+							<div class="state">
+								<input type="checkbox" name="states" value="Nagaland" id="state19">
+								<label for="state19">
+									Nagaland
+								</label>
+							</div>
+
+
+							<div class="state">
+								<input type="checkbox" name="states" value="Odisha" id="state20">
+								<label for="state20">
+									Odisha
+								</label>
+							</div>
+
+
+							<div class="state">
+								<input type="checkbox" name="states" value="Punjab" id="state21">
+								<label for="state21">
+									Punjab
+								</label>
+							</div>
+
+
+							<div class="state">
+								<input type="checkbox" name="states" value="Rajasthan" id="state22">
+								<label for="state22">
+									Rajasthan
+								</label>
+							</div>
+
+
+							<div class="state">
+								<input type="checkbox" name="states" value="Sikkim" id="state23">
+								<label for="state23">
+									Sikkim
+								</label>
+							</div>
+
+
+							<div class="state">
+								<input type="checkbox" name="states" value="Tamil Nadu" id="state24">
+								<label for="state24">
+									Tamil Nadu
+								</label>
+							</div>
+
+
+							<div class="state">
+								<input type="checkbox" name="states" value="Telangana" id="state25">
+								<label for="state25">
+									Telangana
+								</label>
+							</div>
+
+
+							<div class="state">
+								<input type="checkbox" name="states" value="Uttar Pradesh" id="state26">
+								<label for="state26">
+									Uttar Pradesh
+								</label>
+							</div>
+
+
+							<div class="state">
+								<input type="checkbox" name="states" value="Uttarakhand" id="state27">
+								<label for="state27">
+									Uttarakhand
+								</label>
+							</div>
+
+
+							<div class="state">
+								<input type="checkbox" name="states" value="West Bengal" id="state28">
+								<label for="state28">
+									West Bengal
+								</label>
+							</div>
+
+
+						</div>
+
+
+
+						<div class="pan-india">
+
+							<label>
+
+								<input type="checkbox" id="panIndia" name="panIndia">
+
+								<strong>
+									I supply across India (Pan India)
+								</strong>
+
+							</label>
+
+						</div>
+
+
+					</section>
+
+
+
+					<!-- =====================================================
+     SECTION 06 — CONTACT
+===================================================== -->
+
+					<section class="section">
+
+
+						<div class="section-title">
+
+							<div class="section-number">
+								06
+							</div>
+
+							<div>
+
+								<h3>
+									Contact & Business Location
+								</h3>
+
+								<p>
+									Give buyers a reliable way to reach your organization.
+								</p>
+
+							</div>
+
+						</div>
+
+
+
+						<div class="grid">
+
+
+							<div class="field">
+
+								<label>
+									Contact Person
+									<span class="required">*</span>
+								</label>
+
+								<input type="text" name="contactPerson" placeholder="Full name" required>
+
+							</div>
+
+
+							<div class="field">
+
+								<label>
+									Designation
+								</label>
+
+								<input type="text" name="designation" placeholder="e.g. Sales Manager">
+
+							</div>
+
+
+							<div class="field">
+
+								<label>
+									Business Email
+									<span class="required">*</span>
+								</label>
+
+								<input type="email" name="email" placeholder="contact@company.com" required>
+
+							</div>
+
+
+							<div class="field">
+
+								<label>
+									Business Phone
+									<span class="required">*</span>
+								</label>
+
+								<input type="tel" name="phone" placeholder="+91 XXXXX XXXXX" required>
+
+							</div>
+
+
+							<div class="field">
+
+								<label>
+									Website
+								</label>
+
+								<input type="url" name="website" placeholder="https://yourcompany.com">
+
+							</div>
+
+
+							<div class="field">
+
+								<label>
+									City
+									<span class="required">*</span>
+								</label>
+
+								<input type="text" name="city" placeholder="e.g. Nagpur" required>
+
+							</div>
+
+
+							<div class="field">
+
+								<label>
+									State
+								</label>
+
+								<input type="text" name="state" placeholder="e.g. Maharashtra">
+
+							</div>
+
+
+							<div class="field full">
+
+								<label>
+									Complete Business Address
+									<span class="required">*</span>
+								</label>
+
+								<textarea name="address" placeholder="Office / manufacturing / warehouse address"
+									required></textarea>
+
+							</div>
+
+
+						</div>
+
+					</section>
+
+
+
+					<!-- =====================================================
+     SECTION 07 — VERIFICATION
+===================================================== -->
+
+					<section class="section">
+
+
+						<div class="section-title">
+
+							<div class="section-number">
+								07
+							</div>
+
+							<div>
+
+								<h3>
+									Verification & Submission
+								</h3>
+
+								<p>
+									Review your information before joining the network.
+								</p>
+
+							</div>
+
+						</div>
+
+
+
+						<div class="verification">
+
+
+							<div class="verification-icon">
+								✓
+							</div>
+
+
+							<div>
+
+								<strong>
+									Nexus Supplier Verification
+								</strong>
+
+
+								<p>
+
+									Your supplier information will be reviewed before your
+									profile becomes visible to buyers. Nexus uses supplier
+									verification to improve trust and reliability within the
+									procurement network.
+
+								</p>
+
+
+							</div>
+
+
+						</div>
+
+
+
+						<br>
+
+
+
+						<label style="
+        display:flex;
+        gap:9px;
+        align-items:center;
+        cursor:pointer;
+    ">
+
+							<input type="checkbox" id="agreement" required style="width:auto;">
+
+							I confirm that the business information provided is accurate.
+
+						</label>
+
+
+					</section>
+
+
+
+				</div>
+
+
+
+				<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+				<div class="footer">
+
+
+					<div class="footer-note">
+
+						Your supplier profile will initially be marked
+						<strong>Pending Verification</strong>.
+
+					</div>
+
+
+
+					<button type="submit" class="submit">
+
+						Submit Vendor Registration →
+
+					</button>
+
+
+				</div>
+
+
+
+				<div id="success" class="success">
+
+					✓ Vendor registration submitted successfully.
+					Your supplier profile is now pending Nexus verification.
+
+				</div>
+
+
+			</form>
+
+
+		</div>
+
+	</main>
+
+
+
+	<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+	<script>
+
+
+		/* =====================================================
+		   BUSINESS TYPE
+		===================================================== */
+
+		const businessTypes =
+			document.querySelectorAll(
+				'input[name="businessType"]'
+			);
+
+
+		/* =====================================================
+		   INDUSTRY PROFILES
+		===================================================== */
+
+		const industryProfiles = {
+
+			Automotive:
+				document.getElementById(
+					"automotiveProfile"
+				),
+
+			Electronics:
+				document.getElementById(
+					"electronicsProfile"
+				)
+
+		};
+
+
+		const genericProfile =
+			document.getElementById(
+				"genericProfile"
+			);
+
+
+		const industryInputs =
+			document.querySelectorAll(
+				'input[name="category"]'
+			);
+
+
+		industryInputs.forEach(input => {
+
+			input.addEventListener(
+				"change",
+				function () {
+
+					Object.values(industryProfiles)
+						.forEach(profile => {
+
+							if (profile) {
+
+								profile.classList.remove(
+									"show"
+								);
+
+							}
+
+						});
+
+
+					genericProfile.classList.remove(
+						"show"
+					);
+
+
+					if (
+						industryProfiles[this.value]
+					) {
+
+						industryProfiles[
+							this.value
+						].classList.add("show");
+
+					} else {
+
+						genericProfile.classList.add(
+							"show"
+						);
+
+					}
+
+				}
+			);
+
+		});
+
+
+
+		/* =====================================================
+		   SERVICE STATES
+		===================================================== */
+
+		const panIndia =
+			document.getElementById(
+				"panIndia"
+			);
+
+
+		const stateInputs =
+			document.querySelectorAll(
+				'input[name="states"]'
+			);
+
+
+		panIndia.addEventListener(
+			"change",
+			function () {
+
+				if (this.checked) {
+
+					stateInputs.forEach(
+						state => {
+
+							state.checked =
+								false;
+
+							state.disabled =
+								true;
+
+						}
+					);
+
+				} else {
+
+					stateInputs.forEach(
+						state => {
+
+							state.disabled =
+								false;
+
+						}
+					);
+
+				}
+
+			}
+		);
+
+
+
+		function selectAllStates() {
+
+			panIndia.checked = false;
+
+			stateInputs.forEach(
+				state => {
+
+					state.disabled = false;
+
+					state.checked = true;
+
+				}
+			);
+
+		}
+
+
+
+		function clearStates() {
+
+			panIndia.checked = false;
+
+			stateInputs.forEach(
+				state => {
+
+					state.disabled = false;
+
+					state.checked = false;
+
+				}
+			);
+
+		}
+
+
+
+		/* =====================================================
+		   FORM SUBMISSION
+		===================================================== */
+
+		document
+			.getElementById("vendorForm")
+			.addEventListener(
+				"submit",
+				async function (event) {
+
+					event.preventDefault();
+
+
+					/* -----------------------------
+					   CATEGORY
+					----------------------------- */
+
+					const category =
+						document.querySelector(
+							'input[name="category"]:checked'
+						);
+
+
+					if (!category) {
+
+						alert(
+							"Please select your primary supply industry."
+						);
+
+						return;
+
+					}
+
+
+
+					/* -----------------------------
+					   LOCATION
+					----------------------------- */
+
+					const selectedStates =
+						Array.from(
+							document.querySelectorAll(
+								'input[name="states"]:checked'
+							)
+						).map(
+							state => state.value
+						);
+
+
+					if (
+						!panIndia.checked &&
+						selectedStates.length === 0
+					) {
+
+						alert(
+							"Please select at least one service state or choose Pan India."
+						);
+
+						return;
+
+					}
+
+
+
+					/* -----------------------------
+					   FORM DATA
+					----------------------------- */
+
+					const form =
+						new FormData(
+							this
+						);
+
+
+					const vendorData = {
+
+						vendorName:
+							form.get("vendorName"),
+
+						businessType:
+							form.get("businessType"),
+
+						category:
+							category.value,
+
+						contactPerson:
+							form.get("contactPerson"),
+
+						designation:
+							form.get("designation"),
+
+						email:
+							form.get("email"),
+
+						phone:
+							form.get("phone"),
+
+						website:
+							form.get("website"),
+
+						address:
+							form.get("address"),
+
+						city:
+							form.get("city"),
+
+						state:
+							form.get("state"),
+
+						description:
+							form.get("description"),
+
+						gst:
+							form.get("gst"),
+
+						establishedYear:
+							form.get("establishedYear"),
+
+						businessScale:
+							form.get("businessScale"),
+
+						serviceArea:
+							panIndia.checked
+								? "PAN INDIA"
+								: selectedStates.join(", "),
+
+						status:
+							"Pending",
+
+						rating:
+							0
+
+					};
+
+
+
+					/* -----------------------------
+					   SEND TO SPRING BOOT
+					----------------------------- */
+
+					try {
+
+						const response =
+							await fetch(
+								"/vendors",
+								{
+
+									method: "POST",
+
+									headers: {
+
+										"Content-Type":
+											"application/json"
+
+									},
+
+									body:
+										JSON.stringify(
+											vendorData
+										)
+
+								}
+							);
+
+
+						if (!response.ok) {
+
+							throw new Error(
+								"Server rejected registration"
+							);
+
+						}
+
+
+
+						/* -----------------------------
+						   SUCCESS
+						----------------------------- */
+
+						const success =
+							document.getElementById(
+								"success"
+							);
+
+
+						success.style.display =
+							"block";
+
+
+						success.scrollIntoView({
+							behavior: "smooth",
+							block: "center"
+						});
+
+
+						this.reset();
+
+
+						document
+							.querySelectorAll(
+								".dynamic-box"
+							)
+							.forEach(
+								box =>
+									box.classList.remove(
+										"show"
+									)
+							);
+
+
+					}
+
+					catch (error) {
+
+						console.error(error);
+
+
+						alert(
+							"Registration could not be submitted. Please check that the Spring Boot server and database are running."
+						);
+
+					}
+
+				}
+			);
+
+
+	</script>
+
+
+
+</body>
+
+</html>

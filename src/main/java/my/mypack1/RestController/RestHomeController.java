@@ -14,16 +14,16 @@ import my.mypack1.dao.VendorDao;
 @RestController
 public class RestHomeController {
 
-    @Autowired
-    private VendorDao repo;
+	@Autowired
+	private VendorDao repo;
 
-    @GetMapping("/vendors")
-    public List<Vendor> getallVendors() {
-        return repo.findAll();
-    }
+	@GetMapping("/vendors")
+	public List<Vendor> getallVendors() {
+		return repo.findAll();
+	}
 
-    @PostMapping("/vendors")
-    public void createVendor(@RequestBody Vendor v) {
-        repo.save(v);
-    }
+	@PostMapping("/vendors")
+	public void createVendor(@RequestBody Vendor v) {
+		repo.save(v);
+	}
 }
