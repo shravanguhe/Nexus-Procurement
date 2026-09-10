@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Vendor Login | Nexus Procurement</title>
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            min-height: 100vh;
+
+            font-family: "Segoe UI", Arial, sans-serif;
+
+            background:
+                radial-gradient(
+                    circle at 15% 20%,
+                    rgba(124, 58, 237, 0.25),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 85% 80%,
+                    rgba(168, 85, 247, 0.20),
+                    transparent 30%
+                ),
+                #0c0818;
+
+            color: white;
+
+            overflow: hidden;
+
+        }
+
+
+        /* BACKGROUND NETWORK */
+
+        .network {
+
+            position: fixed;
+
+            inset: 0;
+
+            pointer-events: none;
+
+            overflow: hidden;
+
+        }
+
+
+        .circle {
+
+            position: absolute;
+
+            border: 1px solid rgba(167, 139, 250, 0.15);
+
+            border-radius: 50%;
+
+        }
+
+
+        .circle.one {
+
+            width: 600px;
+            height: 600px;
+
+            left: -200px;
+            top: -180px;
+
+        }
+
+
+        .circle.two {
+
+            width: 750px;
+            height: 750px;
+
+            right: -280px;
+            bottom: -250px;
+
+        }
+
+
+        .circle.three {
+
+            width: 300px;
+            height: 300px;
+
+            right: 15%;
+            top: 15%;
+
+        }
+
+
+        .node {
+
+            position: absolute;
+
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: #a78bfa;
+
+            box-shadow:
+                0 0 10px #a78bfa,
+                0 0 25px rgba(167, 139, 250, 0.6);
+
+            animation: float 5s infinite ease-in-out;
+
+        }
+
+
+        .node.one {
+            left: 18%;
+            top: 25%;
+        }
+
+        .node.two {
+            left: 78%;
+            top: 28%;
+
+            animation-delay: 1s;
+        }
+
+        .node.three {
+            left: 30%;
+            bottom: 20%;
+
+            animation-delay: 2s;
+        }
+
+        .node.four {
+            right: 20%;
+            bottom: 18%;
+
+            animation-delay: 3s;
+        }
+
+
+        @keyframes float {
+
+            0%, 100% {
+                transform: translateY(0);
+                opacity: 0.5;
+            }
+
+            50% {
+                transform: translateY(-15px);
+                opacity: 1;
+            }
+
+        }
+
+
+        /* NAVBAR */
+
+        .navbar {
+
+            height: 76px;
+
+            background: rgba(255, 255, 255, 0.97);
+
+            color: #171321;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 7%;
+
+            position: relative;
+
+            z-index: 10;
+
+        }
+
+
+        .brand {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+        }
+
+
+        .brand-logo {
+
+            width: 42px;
+            height: 42px;
+
+            border-radius: 12px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #7438e8,
+                    #9b6cff
+                );
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            color: white;
+
+            font-size: 20px;
+
+            font-weight: 900;
+
+            box-shadow:
+                0 8px 25px
+                rgba(116, 56, 232, 0.3);
+
+        }
+
+
+        .brand-name {
+
+            font-size: 18px;
+
+            font-weight: 850;
+
+        }
+
+
+        .brand-subtitle {
+
+            font-size: 9px;
+
+            letter-spacing: 2px;
+
+            color: #8a8492;
+
+            margin-top: 3px;
+
+        }
+
+
+        .back {
+
+            text-decoration: none;
+
+            color: #514a5c;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+        }
+
+
+        .back:hover {
+
+            color: #7438e8;
+
+        }
+
+
+        /* MAIN */
+
+        .main {
+
+            min-height: calc(100vh - 76px);
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 30px;
+
+            position: relative;
+
+            z-index: 2;
+
+        }
+
+
+        .login-wrapper {
+
+            width: 100%;
+
+            max-width: 460px;
+
+        }
+
+
+        .eyebrow {
+
+            display: table;
+
+            margin: 0 auto 18px;
+
+            padding: 8px 15px;
+
+            border: 1px solid
+                rgba(167, 139, 250, 0.35);
+
+            border-radius: 30px;
+
+            background:
+                rgba(124, 58, 237, 0.10);
+
+            color: #bca5ff;
+
+            font-size: 11px;
+
+            font-weight: 850;
+
+            letter-spacing: 1.5px;
+
+        }
+
+
+        .login-card {
+
+            background:
+                rgba(255, 255, 255, 0.97);
+
+            color: #171321;
+
+            border-radius: 22px;
+
+            padding: 38px;
+
+            border: 1px solid
+                rgba(255, 255, 255, 0.5);
+
+            box-shadow:
+                0 30px 80px
+                rgba(0, 0, 0, 0.35);
+
+        }
+
+
+        .login-icon {
+
+            width: 58px;
+            height: 58px;
+
+            border-radius: 17px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #7438e8,
+                    #9b6cff
+                );
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 25px;
+
+            margin-bottom: 20px;
+
+            box-shadow:
+                0 12px 30px
+                rgba(116, 56, 232, 0.25);
+
+        }
+
+
+        h1 {
+
+            font-size: 31px;
+
+            letter-spacing: -1px;
+
+        }
+
+
+        .subtitle {
+
+            margin-top: 8px;
+
+            color: #777080;
+
+            font-size: 14px;
+
+            line-height: 1.6;
+
+        }
+
+
+        .field {
+
+            margin-top: 22px;
+
+        }
+
+
+        label {
+
+            display: block;
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            color: #413a4b;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        input {
+
+            width: 100%;
+
+            padding: 14px;
+
+            border-radius: 10px;
+
+            border: 1px solid #ddd6e6;
+
+            background: #fcfbfe;
+
+            font-family: inherit;
+
+            font-size: 14px;
+
+            outline: none;
+
+            transition: 0.2s;
+
+        }
+
+
+        input:focus {
+
+            border-color: #7438e8;
+
+            background: white;
+
+            box-shadow:
+                0 0 0 4px
+                rgba(116, 56, 232, 0.08);
+
+        }
+
+
+        .password-wrapper {
+
+            position: relative;
+
+        }
+
+
+        .password-wrapper input {
+
+            padding-right: 65px;
+
+        }
+
+
+        .show {
+
+            position: absolute;
+
+            right: 10px;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            border: none;
+
+            background: transparent;
+
+            color: #7438e8;
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            cursor: pointer;
+
+        }
+
+
+        .login-button {
+
+            width: 100%;
+
+            margin-top: 27px;
+
+            padding: 14px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #7438e8,
+                    #5b21b6
+                );
+
+            color: white;
+
+            font-size: 14px;
+
+            font-weight: 850;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 12px 30px
+                rgba(116, 56, 232, 0.28);
+
+            transition: 0.2s;
+
+        }
+
+
+        .login-button:hover {
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 16px 35px
+                rgba(116, 56, 232, 0.38);
+
+        }
+
+
+        .message {
+
+            display: none;
+
+            margin-top: 15px;
+
+            padding: 12px;
+
+            border-radius: 9px;
+
+            font-size: 12px;
+
+            text-align: center;
+
+            font-weight: 700;
+
+        }
+
+
+        .register {
+
+            text-align: center;
+
+            margin-top: 24px;
+
+            padding-top: 20px;
+
+            border-top: 1px solid #eeeaf3;
+
+            color: #777080;
+
+            font-size: 13px;
+
+        }
+
+
+        .register a {
+
+            color: #7438e8;
+
+            font-weight: 800;
+
+            text-decoration: none;
+
+        }
+
+
+        .register a:hover {
+
+            text-decoration: underline;
+
+        }
+
+
+        .security-note {
+
+            text-align: center;
+
+            color: #8d8796;
+
+            font-size: 10px;
+
+            margin-top: 18px;
+
+            letter-spacing: 0.3px;
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .navbar {
+
+                padding: 0 20px;
+
+            }
+
+            .main {
+
+                padding: 20px;
+
+            }
+
+            .login-card {
+
+                padding: 28px 22px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- FUTURISTIC BACKGROUND -->
+
+    <div class="network">
+
+        <div class="circle one"></div>
+
+        <div class="circle two"></div>
+
+        <div class="circle three"></div>
+
+        <div class="node one"></div>
+
+        <div class="node two"></div>
+
+        <div class="node three"></div>
+
+        <div class="node four"></div>
+
+    </div>
+
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+
+        <div class="brand">
+
+            <div class="brand-logo">
+                N
+            </div>
+
+            <div>
+
+                <div class="brand-name">
+                    NEXUS PROCUREMENT
+                </div>
+
+                <div class="brand-subtitle">
+                    OPEN B2B PROCUREMENT NETWORK
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <a href="/" class="back">
+            ← Back to Nexus
+        </a>
+
+    </nav>
+
+
+    <!-- MAIN -->
+
+    <main class="main">
+
+        <div class="login-wrapper">
+
+
+            <div class="eyebrow">
+                NEXUS VENDOR PORTAL
+            </div>
+
+
+            <div class="login-card">
+
+
+                <div class="login-icon">
+                    🔐
+                </div>
+
+
+                <h1>
+                    Welcome back.
+                </h1>
+
+
+                <p class="subtitle">
+
+                    Sign in to access your vendor dashboard,
+                    manage products and track your procurement activity.
+
+                </p>
+
+
+                <form id="loginForm">
+
+
+                    <!-- LOGIN ID -->
+
+                    <div class="field">
+
+                        <label>
+                            Login ID / Email
+                        </label>
+
+                        <input
+                            type="email"
+                            id="loginEmail"
+                            placeholder="vendor@company.com"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- PASSWORD -->
+
+                    <div class="field">
+
+                        <label>
+                            Password
+                        </label>
+
+                        <div class="password-wrapper">
+
+                            <input
+                                type="password"
+                                id="password"
+                                placeholder="Enter your password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="show"
+                                onclick="togglePassword()"
+                            >
+                                Show
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- LOGIN -->
+
+                    <button
+                        type="submit"
+                        class="login-button"
+                    >
+                        Sign In to Vendor Dashboard →
+                    </button>
+
+
+                    <div
+                        id="message"
+                        class="message"
+                    ></div>
+
+
+                </form>
+
+
+                <!-- REGISTER -->
+
+                <div class="register">
+
+                    Don't have a vendor account?
+
+                    <a href="/register/vendor">
+                        Register as a Vendor
+                    </a>
+
+                </div>
+
+
+                <div class="security-note">
+
+                    Nexus Vendor Network • Secure access portal
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <script>
+
+
+        /* SHOW / HIDE PASSWORD */
+
+        function togglePassword() {
+
+            const password =
+                document.getElementById("password");
+
+            const button =
+                document.querySelector(".show");
+
+
+            if (password.type === "password") {
+
+                password.type = "text";
+
+                button.textContent = "Hide";
+
+            } else {
+
+                password.type = "password";
+
+                button.textContent = "Show";
+
+            }
+
+        }
+
+
+        /* TEMPORARY LOGIN */
+
+        document
+            .getElementById("loginForm")
+            .addEventListener(
+                "submit",
+                function(event) {
+
+                    event.preventDefault();
+
+
+                    const email =
+                        document.getElementById(
+                            "loginEmail"
+                        ).value;
+
+
+                    const password =
+                        document.getElementById(
+                            "password"
+                        ).value;
+
+
+                    const message =
+                        document.getElementById(
+                            "message"
+                        );
+
+
+                    /*
+                     * TEMPORARY PROTOTYPE LOGIN
+                     *
+                     * Later we will replace this
+                     * with Spring Boot authentication.
+                     */
+
+
+                    if (
+                        email.trim() !== "" &&
+                        password.trim() !== ""
+                    ) {
+
+                        message.style.display =
+                            "block";
+
+                        message.style.background =
+                            "#ecfdf5";
+
+                        message.style.border =
+                            "1px solid #bbf7d0";
+
+                        message.style.color =
+                            "#166534";
+
+                        message.textContent =
+                            "Login successful. Opening your vendor dashboard...";
+
+
+                        setTimeout(
+                            function() {
+
+                                window.location.href =
+                                    "/vendor/dashboard";
+
+                            },
+                            800
+                        );
+
+                    }
+
+                }
+            );
+
+
+    </script>
+
+</body>
+
+</html>
