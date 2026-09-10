@@ -24,6 +24,6 @@ public class RestHomeController {
 
 	@PostMapping("/vendors")
 	public void createVendor(@RequestBody Vendor v) {
-		repo.save(v);
+		repo.save(v);     
 	}
 }
